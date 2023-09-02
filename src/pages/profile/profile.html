@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+</head>
+<body>
+    {{#> block class='block' action='/pages/registration/registration.html'}}
+        <div class="b-flex m-b-10">
+            {{> logo class='col-60'}}
+            <img class="profile_logo col-40" src="/assets/img/photo2.jpg">
+        </div>
+        <h1>Профиль</h1>
+        <div class="col-60 b-a-c">
+            {{> input type='text' placeholder='Почта' name='email' value='ams@mail.ru'}}
+            {{> input type='text' placeholder='Логин' name='login' value='mlshina'}}
+            {{> input type='text' placeholder='Имя' name='first_name' value='Мария'}}
+            {{> input type='text' placeholder='Фамилия' name='second_name' value='Лашина'}}
+            {{> input type='text' placeholder='Телефон' name='phone' value='+7 (915) 88r-96-56'}}
+            {{> input type='password' placeholder='Пароль' name='password' value='2222'}}
+            {{> input type='password' placeholder='Повторить пароль' name='password' value='2222'}}
+            {{> button labels='Редактировать' class='b-a-c m-t-20'}}
+        </div>
+    {{/block}}
+</body>
+</html>
