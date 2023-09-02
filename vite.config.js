@@ -32,6 +32,9 @@ const pageData = {
 };
 
 export default defineConfig({
+    server: {
+        port: '3000'
+    },
     root: resolve(__dirname, 'src'),
     build: {
         outDir: resolve(__dirname, 'dist'),
