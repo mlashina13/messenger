@@ -5,22 +5,7 @@
     <title>{{title}}</title>
 </head>
 <body>
-    {{#> block class='block' action='/pages/chat/chat.html'}}
-        <div class="b-flex m-b-10">
-            {{> logo class='col-60'}}
-            {{> link href="/" name='Загрузить фото' class='col-40'}}
-        </div>
-        <h1>Регистрация</h1>
-        <div class="col-60 b-a-c">
-            {{> input type='text' placeholder='Почта' name='email'}}
-            {{> input type='text' placeholder='Логин' name='login' error='Такой логин уже существует'}}
-            {{> input type='text' placeholder='Имя' name='first_name'}}
-            {{> input type='text' placeholder='Фамилия' name='second_name'}}
-            {{> input type='text' placeholder='Телефон' name='phone'}}
-            {{> input type='password' placeholder='Пароль' name='password'}}
-            {{> input type='password' placeholder='Повторить пароль' name='password' error='Пароли не совпадают'}}
-            {{> button labels='Сохранить' class='b-a-c m-t-20'}}
-        </div>
-    {{/block}}
+    <div id="app"></div>
+    <script type="module" src="registration.ts"></script>
 </body>
 </html>

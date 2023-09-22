@@ -1,10 +1,11 @@
+@import "variable";
 main {
   display: flex;
   font-size: 13px;
   font-family: Arial;
   .block {
-    border: 1px solid #F18C8C;
-    box-shadow: 10px 10px 1px #F8EA6F;
+    border: 1px solid $red;
+    box-shadow: 10px 10px 1px $orange;
     padding: 20px;
     width: 400px;
     position: absolute;
@@ -25,6 +26,14 @@ main {
     display: grid;
     grid-template-columns:1fr 2fr;
     gap: 20px;
+    .b-red {
+      position: relative;
+    }
+    .message-btn {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
   }
 }
 

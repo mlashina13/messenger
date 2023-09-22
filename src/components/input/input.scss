@@ -1,32 +1,34 @@
+@import "../../assets/css/variable.scss";
 .input {
   position: relative;
   margin-bottom: 5px;
   input {
-    color: #5C56A1;
+    color: $lilas;
     background-color: transparent;
     border: 0px;
-    border-bottom: 1px solid #BEBAED;
+    border-bottom: 1px solid $blue;
     width: 100%;
     height: 30px;
     text-align: left;
-    padding: 0;
+    padding: 0px 5px;
     margin-bottom: 10px;
     &:focus {
-      color: #5C56A1;
+      color: $lilas;
     }
     &:focus-visible {
-      color: #5C56A1;
+      color: $lilas;
       outline: 0px
     }
 
     &::placeholder {
-      color: #BEBAED;
+      color: $blue;
     }
   }
   .error {
     position: absolute;
-    top:35px;
-    color:#F18C8C;
-    font-size: 10px;
+    top:33px;
+    color:$red;
+    font-size: 9px;
+    line-height: 9px;
   }
 }

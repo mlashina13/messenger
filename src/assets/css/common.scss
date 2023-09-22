@@ -1,3 +1,4 @@
+@import "variable";
 .m-10 {
   margin: 10px;
 }
@@ -19,6 +20,15 @@
 .b-flex{
   display:flex;
   justify-content: space-between;
+}
+.float-rigth {
+  float: right;
+}
+.col-80 {
+  width: 80%;
+}
+.col-70 {
+  width: 70%;
 }
 .col-60 {
   width: 60%;
@@ -46,14 +56,14 @@
   text-align: center;
 }
 .custom-st-href {
-  color: #F18C8C;
+  color: $red;
   text-decoration: none;
 }
 .bold {
   font-weight: bold;
 }
 h1 {
-  color: #5C56A1;
+  color: $lilas;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
@@ -71,10 +81,10 @@ h1 {
   font-size: 12px;
 }
 .b-orange {
-  border: 1px solid #F8EA6F;
+  border: 1px solid $orange;
 }
 .b-red {
-  border: 1px solid #F18C8C ;
+  border: 1px solid $red ;
 }
 .t-gray {
   color: gray;
@@ -85,7 +95,7 @@ ul {
 }
 .profile_logo {
   width: 60px;
-  background-color: #5c56a1;
+  background-color: $lilas;
   border-radius: 50%;
   height: 60px;
   color: #ffffff;
