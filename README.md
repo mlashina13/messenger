@@ -12,6 +12,13 @@ https://www.figma.com/file/9azfiQysaaWXFfVW5imPK0/Untitled?type=design&node-id=0
 - Ошибка - https://deploy--dancing-granita-ec34c4.netlify.app/pages/page404/page404
 - Страница не найдена - https://deploy--dancing-granita-ec34c4.netlify.app/pages/page500/page500
 
+Добавлена проверка валидации полей на страницах:
+- Авторизация
+- Профиль
+- Регистрация
+- Список чатов
+
+
 Запуск проекта:
 - npm i
 - npm run start

@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import {HelperOptions} from "handlebars";
 
+
 export interface BlockComponent {
   element(): Element;
 }
@@ -9,7 +10,7 @@ export  interface BlockComponentClass<T> extends BlockComponent{
   new (props: unknown): T
 }
 
-type ComponentType<T extends BlockComponentClass<T>> = {new (props: object)}
+type ComponentType<T extends BlockComponentClass<T>> = {new (props: ConstructorParameters<InstanceType<T>>)}
 
 export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: ComponentType<T>) {
   if (name in Handlebars.helpers) {
