@@ -1,39 +1,45 @@
-@import "../../assets/css/variable";
+
+
 li.chat {
     grid-template-columns: 60px auto 10%;
     gap: 20px;
     list-style:none;
     display: grid;
     padding: 5px 10px;
-    border-top: 1px solid $orange;
+    border-top: 1px solid #f8ea6f;
+
     &.active {
-        background-color: $orange;
+        background-color: #f8ea6f;
     }
-    .chat_photo {
+
+    .chat-photo {
         width: 50px;
         border-radius: 50%;
         height: 50px;
         object-fit: cover;
     }
-    .chat_count {
+
+    .chat-count {
         width: 25px;
-        background-color: $lilas;
+        background-color: #5c56a1;
         border-radius: 50%;
         height: 25px;
-        color: #ffffff;
+        color: #fff;
         text-align: center;
         line-height: 25px;
         margin-top: 15px;
     }
-    .chat_name {
+
+    .chat-name {
         height: 50px;
         line-height: 50px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
         a {
             text-decoration: none;
-            color: $lilas;
+            color: #5c56a1;
             line-height: 24px;
         }
     }

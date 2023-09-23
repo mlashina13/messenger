@@ -9,7 +9,7 @@ export  interface BlockComponentClass<T> extends BlockComponent{
   new (props: unknown): T
 }
 
-type ComponentType<T extends BlockComponentClass<T>> = {new (props: unknown)}
+type ComponentType<T extends BlockComponentClass<T>> = {new (props: object)}
 
 export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: ComponentType<T>) {
   if (name in Handlebars.helpers) {

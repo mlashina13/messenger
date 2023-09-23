@@ -1,11 +1,11 @@
-@import "variable";
 main {
   display: flex;
   font-size: 13px;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+
   .block {
-    border: 1px solid $red;
-    box-shadow: 10px 10px 1px $orange;
+    border: 1px solid #f18c8c;
+    box-shadow: 10px 10px 1px #f8ea6f;
     padding: 20px;
     width: 400px;
     position: absolute;
@@ -16,19 +16,21 @@ main {
     margin-left: -200px;
     overflow: auto;
   }
-  .block_chat {
+
+  .block-chat {
     width: 100%;
     padding: 10px;
     margin: 10px;
-    display: flex;
     flex-wrap: wrap;
     height: calc(100vh - 60px);
     display: grid;
     grid-template-columns:1fr 2fr;
     gap: 20px;
+
     .b-red {
       position: relative;
     }
+
     .message-btn {
       position: absolute;
       bottom: 0;

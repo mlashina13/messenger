@@ -15,8 +15,8 @@ export function validationEmail(str: string): string {
     return ''
 }
 
-export function validationLogin(str: string): string {
-    return str.length < 3 && str.length !== 0 ? `Длина поля должна быть больше 3-х символов` : ''
+export function validationLogin(str: string): string {debugger;
+    return str.length < 3 ? `Длина поля должна быть больше 3-х символов` : ''
 }
 
 export function validationPassword(str: string): string {

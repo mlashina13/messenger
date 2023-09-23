@@ -1,14 +1,17 @@
-@import "../../assets/css/variable";
+
+
 .message {
     padding: 5px;
     margin-bottom: 10px;
 }
+
 .owner {
-    background-color: $lilas;
+    background-color: #5c56a1;
     color: white;
 }
+
 .answer {
-    background-color: $blue;
+    background-color: #bebaed;
     color: black;
     margin-left: 30px;
 }

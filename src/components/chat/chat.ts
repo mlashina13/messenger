@@ -19,13 +19,13 @@ export class Chat extends Block<IProps> {
         return (`
            <li class="chat {{chat.active}}">
                 <div>
-                    <img class="chat_photo" src="{{chat.photo}}"/>
+                    <img class="chat-photo" src="{{chat.photo}}"/>
                 </div>
-                <div class="chat_name" title="{{chat.name}}">
+                <div class="chat-name" title="{{chat.name}}">
                     <a href="{{chat.url}}">{{chat.name}}</a>
                 </div>
                 {{#if chat.count}}
-                    <div class="chat_count">{{chat.count}}</div>
+                    <div class="chat-count">{{chat.count}}</div>
                 {{/if}}
             </li>`)
     }

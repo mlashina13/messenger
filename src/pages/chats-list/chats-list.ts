@@ -25,7 +25,7 @@ export class ChatPage extends Block<IProp> {
   }
 
   render() {
-    return (`<div> {{#> Form class="block_chat" }}
+    return (`<div> {{#> Form class="block-chat" }}
             <div class="b-orange">
                 <div class="b-flex m-10">
                     {{> Logo class='col-60'}}
