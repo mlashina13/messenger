@@ -5,18 +5,18 @@
 https://www.figma.com/file/9azfiQysaaWXFfVW5imPK0/Untitled?type=design&node-id=0-1&mode=design&t=Bgxa5eYgu0rWgSNS-0
 
 В приложении имеются следующие страницы:
-- Авторизация - https://deploy--dancing-granita-ec34c4.netlify.app/
-- Профиль - https://deploy--dancing-granita-ec34c4.netlify.app/pages/profile/profile
-- Регистрация - https://deploy--dancing-granita-ec34c4.netlify.app/pages/registration/registration.html
-- Список чатов - https://deploy--dancing-granita-ec34c4.netlify.app/pages/chat/chat.html
-- Ошибка - https://deploy--dancing-granita-ec34c4.netlify.app/pages/page404/page404
-- Страница не найдена - https://deploy--dancing-granita-ec34c4.netlify.app/pages/page500/page500
+- главная страница https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/
+- Авторизация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/login/login
+- Профиль - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/profile
+- Регистрация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/registration/registration
+- Список чатов - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/chats-list/chats-list
+- Ошибка - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/page404/page404
+- Страница не найдена - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/page500/page500
 
 Добавлена проверка валидации полей на страницах:
-- Авторизация
-- Профиль
-- Регистрация
-- Список чатов
+- Авторизация (проверка логина и пароля)
+- Профиль и Регистрация (проверка правильности ввода данных пользователя)
+- Список чатов (проверка на ввод пустого сообщения)
 
 
 Запуск проекта:
