@@ -1,9 +1,10 @@
 module.exports = {
   extends: [
     'airbnb-base',
+    "plugin:@typescript-eslint/recommended"
   ],
   rules: {
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   env: {
     es6: true,
