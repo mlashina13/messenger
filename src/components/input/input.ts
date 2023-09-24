@@ -13,11 +13,11 @@ export interface IProps {
 export class Input extends Block<IProps> {
   constructor(props: IProps) {
     super({
-        ...props,
-        events: {
+      ...props,
+      events: {
         blur: props.onBlur || (() => {
         }),
-        },
+      },
     });
   }
 

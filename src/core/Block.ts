@@ -23,7 +23,7 @@ export class Block <Props extends object> {
     const eventBus = new EventBus();
 
     if (props && Object.keys(props).length !== 0) {
-      this.props = this._makePropsProxy(props) as Props
+      this.props = this._makePropsProxy(props) as Props;
     }
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
@@ -138,11 +138,11 @@ export class Block <Props extends object> {
 
     // @ts-ignore
     return new Proxy(props, {
-      get: function (props, prop: string){
-        const value = props[prop];
-        return typeof value === 'function' ? value.bind(props) : value;
+      get(target, prop) {
+        const value = target[prop];
+        return typeof value === 'function' ? value.bind(target) : value;
       },
-      set: function(target, prop, value) {
+      set(target, prop, value) {
         const oldTarget = { ...target };
         target[prop] = value;
 

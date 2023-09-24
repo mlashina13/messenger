@@ -13,9 +13,9 @@ export interface IProps {
 export class InputField extends Block<IProps> {
   constructor(props: IProps) {
     super({
-        ...props,
-        onBlur: () => this.validate(),
-        // value: () => {this.value();}
+      ...props,
+      onBlur: () => this.validate(),
+      // value: () => {this.value();}
     });
   }
 

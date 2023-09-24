@@ -10,7 +10,7 @@ export interface IProp {
 }
 
 export class ChatPage extends Block<IProp> {
-  constructor(prop: { chats: ({ name: string; count: number; photo: string; active: string; url: string } | { name: string; count: number; photo: string; url: string } | { name: string; photo: string; url: string } | { name: string; photo: string; url: string })[]; messages: ({ date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string })[] }) {
+  constructor(prop: IProp) {
     super({
       ...prop,
       validate: {
@@ -19,7 +19,7 @@ export class ChatPage extends Block<IProp> {
       onSend: (event) => {
         event.preventDefault();
         const message = this.refs.message.value();
-        console.log({message});
+        console.log({ message });
       },
     });
   }

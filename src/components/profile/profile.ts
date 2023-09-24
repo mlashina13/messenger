@@ -17,26 +17,26 @@ export interface IProps {
 export class Profile extends Block<IProps> {
   constructor(props: IProps) {
     super({
-        ...props,
-        validate: {
+      ...props,
+      validate: {
         login: (value: string) => validationLogin(value),
         password: (value: string) => validationPassword(value),
         name: (value: string) => validationName(value),
         email: (value: string) => validationEmail(value),
         phone: (value: string) => validationPhone(value),
-        },
-        onSave: (event: Event) => {
+      },
+      onSave: (event: Event) => {
         event.preventDefault();
         const reg: ProfileInterface = {
-            email: this.refs.email.value(),
-            first_name: this.refs.first_name.value(),
-            second_name: this.refs.second_name.value(),
-            phone: this.refs.phone.value(),
-            login: this.refs.login.value(),
-            password: this.refs.password.value(),
+          email: this.refs.email.value(),
+          first_name: this.refs.first_name.value(),
+          second_name: this.refs.second_name.value(),
+          phone: this.refs.phone.value(),
+          login: this.refs.login.value(),
+          password: this.refs.password.value(),
         };
         console.log(reg);
-        },
+      },
 
     });
   }
