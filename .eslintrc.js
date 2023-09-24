@@ -34,7 +34,6 @@ module.exports = {
     'prefer-regex-literals': 'off',
     'no-param-reassign': 'off',
     'no-underscore-dangle' :'off',
-    'no-underscore-dangle': 'off',
     'no-unused-vars': 'off',
     'func-names': 'off',
     'no-console': 'off',
@@ -43,6 +42,5 @@ module.exports = {
     'consistent-return': 'off',
     'no-restricted-syntax': 'off',
     'no-empty-function': 'off',
-    'no-empty-function': 'off'
   }
 };

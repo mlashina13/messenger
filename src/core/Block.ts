@@ -39,7 +39,7 @@ export class Block <Props extends object> {
   }
 
   _registerEvents(eventBus: EventBus) {
-    // @ts-ignore
+    //
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -136,7 +136,7 @@ export class Block <Props extends object> {
   _makePropsProxy(props: Props) {
     const self = this;
 
-    // @ts-ignore
+    //
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
