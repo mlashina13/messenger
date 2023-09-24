@@ -12,6 +12,8 @@ module.exports = {
   rules: {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': [
+      'error', {'devDependencies': true}],
     'import/named': 2,
     'import/namespace': 2,
     'import/default': 2,
