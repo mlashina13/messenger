@@ -2,7 +2,8 @@ import Block from '../../core/Block';
 import { registerHelper, render } from '../../core/registerHelper';
 import { registerComponent } from '../../core/resgiterComponent';
 import { Profile } from '../../components/profile/profile';
-interface IProp {
+
+export interface IProp {
   title: string
 }
 

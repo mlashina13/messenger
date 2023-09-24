@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { registerHelper, render } from '../../core/registerHelper';
 import { registerComponent } from '../../core/resgiterComponent';
 
-interface IProp {
+export interface IProp {
 }
 export class Page404 extends Block<IProp> {
   constructor() {

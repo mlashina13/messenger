@@ -4,6 +4,5 @@ export { Error } from './error';
 export { Button } from './button';
 export { Profile } from './profile';
 export { Chat } from './chat';
-export { Message } from './message'
-export { Link } from './link'
-
+export { Message } from './message';
+export { Link } from './link';

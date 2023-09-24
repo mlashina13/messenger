@@ -1,50 +1,48 @@
-import Block from "./../../core/Block";
+import Block from '../../core/Block';
 import {
-    validationName,
-    validationEmail,
-    validationLogin,
-    validationPassword,
-    validationPhone
-} from "../../core/validations";
-import {ProfileInterface} from "./model/profile.interface";
+  validationName,
+  validationEmail,
+  validationLogin,
+  validationPassword,
+  validationPhone,
+} from '../../core/validations';
+import { ProfileInterface } from './model/profile.interface';
 
-interface IProps {
+export interface IProps {
     title: string,
     validate: Object,
     onSave: (e: Event) => void
 }
 
 export class Profile extends Block<IProps> {
-    constructor(props: IProps) {
-        super(
-            {
-                ...props,
-                validate: {
-                    login: (value: string) => validationLogin(value),
-                    password: (value: string) =>  validationPassword(value),
-                    name: (value: string) => validationName(value),
-                    email: (value: string) => validationEmail(value),
-                    phone: (value: string) => validationPhone(value)
-                },
-                onSave: (event: Event) => {
-                    event.preventDefault();
-                    const reg: ProfileInterface = {
-                        email: this.refs.email.value(),
-                        first_name: this.refs.first_name.value(),
-                        second_name: this.refs.second_name.value(),
-                        phone: this.refs.phone.value(),
-                        login: this.refs.login.value(),
-                        password: this.refs.password.value()
-                    };
-                    console.log(reg)
-                },
+  constructor(props: IProps) {
+    super({
+        ...props,
+        validate: {
+        login: (value: string) => validationLogin(value),
+        password: (value: string) => validationPassword(value),
+        name: (value: string) => validationName(value),
+        email: (value: string) => validationEmail(value),
+        phone: (value: string) => validationPhone(value),
+        },
+        onSave: (event: Event) => {
+        event.preventDefault();
+        const reg: ProfileInterface = {
+            email: this.refs.email.value(),
+            first_name: this.refs.first_name.value(),
+            second_name: this.refs.second_name.value(),
+            phone: this.refs.phone.value(),
+            login: this.refs.login.value(),
+            password: this.refs.password.value(),
+        };
+        console.log(reg);
+        },
 
-            }
-        )
-    }
+    });
+  }
 
-    render() {
-        return (`<div class='container'>    
+  render() {
+    return (`<div class='container'>    
        {{#> Form class='block'}}
         <div class="b-flex m-b-10">
             {{> Logo class='col-60'}}
@@ -61,12 +59,6 @@ export class Profile extends Block<IProps> {
             {{{ InputField type='password' placeholder='Повторить пароль' name='retryPassword' ref='retryPassword'}}}
             {{{ Button label='Сохранить' onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10'}}}
         </div>
-        {{/Form}}</div>`)
-        }
+        {{/Form}}</div>`);
+  }
 }
-
-
-
-
-
-

@@ -1,39 +1,45 @@
-import EventBus from "./EventBus";
-import Handlebars from "handlebars";
+import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
-export   class Block<Props extends object> {
+export class Block <Props extends object> {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
   protected props = {} as Props;
+
   protected refs: Record<string, Block<Props>> = {};
+
   protected children: Block<object>[] = [];
+
   private eventBus: () => EventBus;
+
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props?: Props) {
     const eventBus = new EventBus();
 
-    this.props = this._makePropsProxy(props);
+    if (props && Object.keys(props).length !== 0) {
+      this.props = this._makePropsProxy(props) as Props
+    }
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
   }
 
   _addEvents() {
-    const {events = {}} = this.props as { events: Record<string, () => void> };
+    const { events = {} } = this.props as { events: Record<string, () => void> };
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
   }
 
   _registerEvents(eventBus: EventBus) {
-    //@ts-ignore
+    // @ts-ignore
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -81,7 +87,6 @@ export   class Block<Props extends object> {
     return '';
   }
 
-
   get element() {
     return this._element;
   }
@@ -104,7 +109,8 @@ export   class Block<Props extends object> {
     const contextAndStubs = {
       ...context,
       __children: [] as Array<{component: unknown, embed(node: DocumentFragment): void}>,
-      __refs: this.refs};
+      __refs: this.refs,
+    };
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
@@ -112,7 +118,7 @@ export   class Block<Props extends object> {
 
     templ.innerHTML = html;
 
-    contextAndStubs.__children?.forEach(item => {
+    contextAndStubs.__children?.forEach((item) => {
       item.embed(templ.content);
     });
 
@@ -128,18 +134,16 @@ export   class Block<Props extends object> {
   }
 
   _makePropsProxy(props: Props) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
-    //@ts-ignore
+    // @ts-ignore
     return new Proxy(props, {
-      get(target, prop) {
-        const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+      get: function (props, prop: string){
+        const value = props[prop];
+        return typeof value === 'function' ? value.bind(props) : value;
       },
-      set(target, prop, value) {
-        const oldTarget = {...target}
-
+      set: function(target, prop, value) {
+        const oldTarget = { ...target };
         target[prop] = value;
 
         // Запускаем обновление компоненты
@@ -148,19 +152,18 @@ export   class Block<Props extends object> {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = 'block';
   }
 
   hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 }
 
 export default Block;
-

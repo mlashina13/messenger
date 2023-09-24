@@ -1,34 +1,34 @@
-import Block from "./../../core/Block";
-import  {registerHelper, render} from "../../core/registerHelper";
-import  {validationLogin, validationPassword} from "../../core/validations";
+import Block from '../../core/Block';
+import { registerHelper, render } from '../../core/registerHelper';
+import { validationLogin, validationPassword } from '../../core/validations';
 
-interface IProps {
-    onLogin: (e: Event) => void,
+export interface IProps {
+    onLogin: (event: Event) => void,
     validate: Object
 }
 
 export class LoginPage extends Block<IProps> {
-    constructor() {
-        super({
-            validate: {
-                login: (value: string) => validationLogin(value),
-                password: (value: string) =>  validationPassword(value)
-            },
-            onLogin: (event: Event) => {
-                event.preventDefault();
-                const login =  this.refs.login.value();
-                const password =  this.refs.password.value();
+  constructor() {
+    super({
+      validate: {
+        login: (value: string) => validationLogin(value),
+        password: (value: string) => validationPassword(value),
+      },
+      onLogin: (event: Event) => {
+        event.preventDefault();
+        const login = this.refs.login.value();
+        const password = this.refs.password.value();
 
-                console.log({
-                    login,
-                    password
-                })
-            }
+        console.log({
+          login,
+          password,
         });
-    }
+      },
+    });
+  }
 
-    render() {
-        return (`<div class='container'>    
+  render() {
+    return (`<div class='container'>    
         {{#> Form class='block'}}
           <div class='b-flex m-b-10'>
             {{> Logo class='col-60'}}
@@ -43,12 +43,10 @@ export class LoginPage extends Block<IProps> {
           <div class='t-a-c m-b-10'>
             <a class='custom-st-href' href='/pages/page500/page500.html'>Забыли пароль?</a>
           </div>
-        {{/Form}}</div>`)
-        }
+        {{/Form}}</div>`);
+  }
 }
 
 registerHelper();
-const loginPage = new LoginPage()
-render("#app", loginPage);
-
-
+const loginPage = new LoginPage();
+render('#app', loginPage);

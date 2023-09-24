@@ -2,26 +2,26 @@ import Block from '../../core/Block';
 import { registerHelper, render } from '../../core/registerHelper';
 import { registerComponent } from '../../core/resgiterComponent';
 import { Chat } from '../../components/chat/chat';
-import {Message} from "../../components/message/message";
+import { Message } from '../../components/message/message';
 
-interface IProp {
+export interface IProp {
     validate: Object,
-    onSend: (e: Event) => void,
+    onSend: (event: Event) => void,
 }
 
 export class ChatPage extends Block<IProp> {
-    constructor(prop: { chats: ({ name: string; count: number; photo: string; active: string; url: string } | { name: string; count: number; photo: string; url: string } | { name: string; photo: string; url: string } | { name: string; photo: string; url: string })[]; messages: ({ date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string })[] }) {
+  constructor(prop: { chats: ({ name: string; count: number; photo: string; active: string; url: string } | { name: string; count: number; photo: string; url: string } | { name: string; photo: string; url: string } | { name: string; photo: string; url: string })[]; messages: ({ date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string } | { date: string; message: string; class: string })[] }) {
     super({
-            ...prop,
-           validate: {
-              message: (value: string) => value ? '' : 'Сообщение не может быть пустым'
-          },
-          onSend: (event) => {
-              event.preventDefault();
-              const message =  this.refs.message.value();
-              console.log({message});
-          }
-        })
+      ...prop,
+      validate: {
+        message: (value: string) => (value ? '' : 'Сообщение не может быть пустым'),
+      },
+      onSend: (event) => {
+        event.preventDefault();
+        const message = this.refs.message.value();
+        console.log({message});
+      },
+    });
   }
 
   render() {
@@ -67,16 +67,20 @@ registerComponent('Chat', Chat);
 registerComponent('Message', Message);
 const chatPage = new ChatPage({
   chats: [
-    { name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active'},
-    { name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html'},
+    {
+      name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
+    },
+    {
+      name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html',
+    },
     { name: 'Родительский коммитет', photo: '/assets/img/photo1.jfif', url: '/pages/page404/page404.html' },
     { name: 'Группа Волшебники, детский сад №27 г. Таганрог, Ростовская обоасти', photo: '/assets/img/photo3.jfif', url: '/pages/page404/page404.html' },
   ],
   messages: [
-        { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-        { message: 'Ответ', class: 'answer', date: '19 сентября' },
-        { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-        { message: 'Ответ', class: 'answer', date: '19 сентября' },
+    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+    { message: 'Ответ', class: 'answer', date: '19 сентября' },
+    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+    { message: 'Ответ', class: 'answer', date: '19 сентября' },
   ],
 });
 render('#app', chatPage);

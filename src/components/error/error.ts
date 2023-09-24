@@ -1,17 +1,17 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
-interface IProps {
+export interface IProps {
     error: string
 }
 
-export class Error extends Block<IProps>{
-    constructor(props: IProps) {
-        super(props);
-    }
+export class Error extends Block<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
 
-    protected render(): string {
-        return (`           
+  protected render(): string {
+    return (`           
                 <div class="error">{{error}}</div>         
-        `)
-    }
+        `);
+  }
 }

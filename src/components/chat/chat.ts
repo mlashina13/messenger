@@ -1,6 +1,6 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
-interface IProps {
+export interface IProps {
     events: { click: () => void };
     class: string;
     label: string;
@@ -8,15 +8,15 @@ interface IProps {
 }
 
 export class Chat extends Block<IProps> {
-    constructor(props: IProps) {
-        super(props);
-        this.props.events = {
-            click: this.props.onClick || (() => {})
-        }
-    }
+  constructor(props: IProps) {
+    super(props);
+    this.props.events = {
+      click: this.props.onClick || (() => {}),
+    };
+  }
 
-    protected render(): string {
-        return (`
+  protected render(): string {
+    return (`
            <li class="chat {{chat.active}}">
                 <div>
                     <img class="chat-photo" src="{{chat.photo}}"/>
@@ -27,6 +27,6 @@ export class Chat extends Block<IProps> {
                 {{#if chat.count}}
                     <div class="chat-count">{{chat.count}}</div>
                 {{/if}}
-            </li>`)
-    }
+            </li>`);
+  }
 }

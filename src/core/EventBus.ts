@@ -17,7 +17,7 @@ export default class EventBus<E extends string = string, M extends { [K in E]: u
     }
 
     this.listeners[event] = this.listeners[event]!.filter(
-      listener => listener !== callback,
+      (listener) => listener !== callback,
     );
   }
 
@@ -26,7 +26,7 @@ export default class EventBus<E extends string = string, M extends { [K in E]: u
       return;
     }
 
-    this.listeners[event]!.forEach(function (listener) {
+    this.listeners[event]!.forEach((listener) => {
       listener(...args);
     });
   }

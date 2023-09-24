@@ -2,7 +2,7 @@ import Handlebars from 'handlebars';
 import { registerComponent } from './resgiterComponent';
 import * as Components from '../components';
 import * as Partials from '../partials';
-import Block from "./Block";
+import Block from './Block';
 
 export function registerHelper() {
   Handlebars.registerPartial('Logo', Partials.Logo);

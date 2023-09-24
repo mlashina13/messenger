@@ -1,18 +1,18 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
-interface IProps {
+export interface IProps {
     class: string,
     href: string,
     name: string
 }
 
 export class Link extends Block<IProps> {
-    constructor(props: IProps) {
-        super(props)
-    }
+  constructor(props: IProps) {
+    super(props);
+  }
 
-    protected render(): string {
-        return (`           
+  protected render(): string {
+    return (`           
               <div class="{{class}} link">
                 <div>
                     <a href="{{href}}">
@@ -21,6 +21,6 @@ export class Link extends Block<IProps> {
                 </div>
             </div>             
          
-        `)
-    }
+        `);
+  }
 }

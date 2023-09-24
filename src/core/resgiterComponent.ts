@@ -1,12 +1,10 @@
-import Handlebars from 'handlebars';
-import {HelperOptions} from "handlebars";
-
+import Handlebars, { HelperOptions } from 'handlebars';
 
 export interface BlockComponent {
   element(): Element;
 }
 
-export  interface BlockComponentClass<T> extends BlockComponent{
+export interface BlockComponentClass<T> extends BlockComponent{
   new (props: unknown): T
 }
 
@@ -17,7 +15,7 @@ export function registerComponent<T extends BlockComponentClass<T>>(name: string
     throw `The ${name} component is already registered!`;
   }
 
-  Handlebars.registerHelper(name, function (this: unknown, {hash, data, fn}: HelperOptions) {
+  Handlebars.registerHelper(name, function (this: unknown, { hash, data, fn }: HelperOptions) {
     const component = new Component(hash);
     const dataAttribute = `data-id="${component.id}"`;
 
@@ -37,7 +35,7 @@ export function registerComponent<T extends BlockComponentClass<T>>(name: string
         component.getContent()?.append(...Array.from(stub.childNodes));
 
         stub.replaceWith(component.getContent()!);
-      }
+      },
     });
 
     const contents = fn ? fn(this) : '';
