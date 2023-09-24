@@ -7,7 +7,7 @@ module.exports = {
   env: {
     browser: true,
     es2016: true,
-    node: true
+    node: true,
   },
   rules: {
     'import/no-unresolved': 'off',
@@ -16,17 +16,7 @@ module.exports = {
     'import/namespace': 2,
     'import/default': 2,
     'import/export': 2,
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        '': 'never',
-        'js': 'never',
-        'jsx': 'never',
-        'ts': 'never',
-        'tsx': 'never'
-      }
-    ],
+    'import/extensions': 'off',
     'interface-name-prefix': 'off',
     'max-len': [1, 200],
     'no-useless-constructor': 'off',
