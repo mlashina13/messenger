@@ -13,7 +13,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': [
-      'error', {'devDependencies': true}],
+      'error', { devDependencies: true }],
     'import/named': 2,
     'import/namespace': 2,
     'import/default': 2,
@@ -25,7 +25,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'prefer-regex-literals': 'off',
     'no-param-reassign': 'off',
-    'no-underscore-dangle' :'off',
+    'no-underscore-dangle': 'off',
     'no-unused-vars': 'off',
     'func-names': 'off',
     'no-console': 'off',
@@ -34,5 +34,5 @@ module.exports = {
     'consistent-return': 'off',
     'no-restricted-syntax': 'off',
     'no-empty-function': 'off',
-  }
+  },
 };
