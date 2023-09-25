@@ -67,8 +67,8 @@ registerHelper();
 registerComponent('Chat', Chat);
 registerComponent('Message', Message);
 
-
-const chatPage = new ChatPage({obj:  {
+const chatPage = new ChatPage({
+  obj: {
     chats: [
       {
         name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
@@ -85,5 +85,6 @@ const chatPage = new ChatPage({obj:  {
       { message: 'Вопрос', class: 'owner', date: '19 сентября' },
       { message: 'Ответ', class: 'answer', date: '19 сентября' },
     ],
-  }});
+  },
+});
 render('#app', chatPage);
