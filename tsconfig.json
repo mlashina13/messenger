@@ -18,6 +18,5 @@
     "strictNullChecks": true
   },
   "typeRoots": ["types"],
-  "include": ["src/**/*"],
-  "extension": [".ts", ".tsx", ".hbs"]
+  "include": ["src/**/*"]
 }
