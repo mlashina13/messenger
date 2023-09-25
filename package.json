@@ -3,13 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "eslint && vite",
+    "start": "npm run lint && vite",
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "npm run lint -- --fix",
-    "eslint": "eslint .eslintrc.js"
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.2",

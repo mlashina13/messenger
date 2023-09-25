@@ -9,7 +9,7 @@ type Options = {
     method: string,
     timeout?: number;
     headers?: string[];
-    data?: string[];
+    data?: Object;
 };
 
 export class HTTPTransport {
@@ -61,7 +61,7 @@ export class HTTPTransport {
       if (method === METHODS.GET && !data) {
         xhr.send();
       } else {
-        xhr.send();
+        xhr.send(data as FormData);
       }
     });
   };
