@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
-export class Block <Props extends object> {
+export class Block <Props extends object > {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -9,7 +9,7 @@ export class Block <Props extends object> {
     FLOW_RENDER: 'flow:render',
   };
 
-  protected props = {} as Props;
+  protected props: Props;
 
   protected refs: Record<string, Block<Props>> = {};
 
@@ -39,7 +39,6 @@ export class Block <Props extends object> {
   }
 
   _registerEvents(eventBus: EventBus) {
-    //
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -139,12 +138,12 @@ export class Block <Props extends object> {
     //
     return new Proxy(props, {
       get(target, prop) {
-        const value = target[prop];
+        const value = target[prop as keyof typeof target];
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
-        target[prop] = value;
+        target[prop as keyof typeof target] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим

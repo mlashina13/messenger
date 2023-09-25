@@ -5,8 +5,9 @@ import { Chat } from '../../components/chat/chat';
 import { Message } from '../../components/message/message';
 
 export interface IProp {
-    validate: Object,
-    onSend: (event: Event) => void,
+    validate?: Object,
+    onSend?: (event: Event) => void,
+    obj: Object;
 }
 
 export class ChatPage extends Block<IProp> {
@@ -65,22 +66,24 @@ export class ChatPage extends Block<IProp> {
 registerHelper();
 registerComponent('Chat', Chat);
 registerComponent('Message', Message);
-const chatPage = new ChatPage({
-  chats: [
-    {
-      name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
-    },
-    {
-      name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html',
-    },
-    { name: 'Родительский коммитет', photo: '/assets/img/photo1.jfif', url: '/pages/page404/page404.html' },
-    { name: 'Группа Волшебники, детский сад №27 г. Таганрог, Ростовская обоасти', photo: '/assets/img/photo3.jfif', url: '/pages/page404/page404.html' },
-  ],
-  messages: [
-    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-    { message: 'Ответ', class: 'answer', date: '19 сентября' },
-    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-    { message: 'Ответ', class: 'answer', date: '19 сентября' },
-  ],
-});
+
+
+const chatPage = new ChatPage({obj:  {
+    chats: [
+      {
+        name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
+      },
+      {
+        name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html',
+      },
+      { name: 'Родительский коммитет', photo: '/assets/img/photo1.jfif', url: '/pages/page404/page404.html' },
+      { name: 'Группа Волшебники, детский сад №27 г. Таганрог, Ростовская обоасти', photo: '/assets/img/photo3.jfif', url: '/pages/page404/page404.html' },
+    ],
+    messages: [
+      { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+      { message: 'Ответ', class: 'answer', date: '19 сентября' },
+      { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+      { message: 'Ответ', class: 'answer', date: '19 сентября' },
+    ],
+  }});
 render('#app', chatPage);

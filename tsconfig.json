@@ -17,6 +17,7 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": ["src", "src/**/**/*.hbs"],
-  "extension": [".ts", ".tsx"]
+  "typeRoots": ["types"],
+  "include": ["src/**/*"],
+  "extension": [".ts", ".tsx", ".hbs"]
 }
