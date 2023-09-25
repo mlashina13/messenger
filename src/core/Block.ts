@@ -101,7 +101,7 @@ export class Block <Props extends object > {
 
     this._element = newElement;
 
-    this._addEvents();
+    if (this.props) this._addEvents();
   }
 
   private compile(template: string, context: object) {

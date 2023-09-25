@@ -42,10 +42,10 @@ export class Profile extends Block<IProps> {
   }
 
   render() {
-    return (`<div class='container'>    
-       {{#> Form class='block'}}
+    return (`<main>    
+       {{# Form class='block'}}
         <div class="b-flex m-b-10">
-            {{> Logo class='col-60'}}
+            {{{ Logo class='col-60'}}}
             {{{ Link href="/" name='Загрузить фото' class='col-40'}}}
         </div>
         <h1>{{title}}</h1>
@@ -59,6 +59,6 @@ export class Profile extends Block<IProps> {
             {{{ InputField type='password' placeholder='Повторить пароль' name='retryPassword' ref='retryPassword'}}}
             {{{ Button label='Сохранить' onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10'}}}
         </div>
-        {{/Form}}</div>`);
+        {{/Form}}</main>`);
   }
 }

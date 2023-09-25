@@ -28,10 +28,10 @@ export class LoginPage extends Block<IProps> {
   }
 
   render() {
-    return (`<div class='container'>    
-        {{#> Form class='block'}}
+    return (`<main>    
+        {{# Form class='block'}}
           <div class='b-flex m-b-10'>
-            {{> Logo class='col-60'}}
+            {{{ Logo class='col-60'}}}
             {{{ Link href="/pages/registration/registration.html" name='Регистрация' class='col-40'}}}
           </div>
           <h1>Авторизация</h1>
@@ -43,7 +43,7 @@ export class LoginPage extends Block<IProps> {
           <div class='t-a-c m-b-10'>
             <a class='custom-st-href' href='/pages/page500/page500.html'>Забыли пароль?</a>
           </div>
-        {{/Form}}</div>`);
+        {{/Form}}</main>`);
   }
 }
 

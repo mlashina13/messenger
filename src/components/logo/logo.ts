@@ -1,4 +1,16 @@
-<div class="{{class}}">
+import Block from '../../core/Block';
+
+export interface IProps {
+    class: string,
+}
+
+export class Logo extends Block<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
+  protected render(): string {
+    return (`<div class="{{class}}">
     <a href="/">
     <svg width="110" height="71" viewBox="0 0 110 71" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_11_2)">
@@ -35,3 +47,7 @@
     </svg>
     </a>
 </div>
+
+        `);
+  }
+}

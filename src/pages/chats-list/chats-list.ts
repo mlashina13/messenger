@@ -7,7 +7,8 @@ import { Message } from '../../components/message/message';
 export interface IProp {
     validate?: Object,
     onSend?: (event: Event) => void,
-    obj: Object;
+    chats: Object;
+    messages: Object;
 }
 
 export class ChatPage extends Block<IProp> {
@@ -26,10 +27,10 @@ export class ChatPage extends Block<IProp> {
   }
 
   render() {
-    return (`<div> {{#> Form class="block-chat" }}
+    return (`<main> {{# Form class="block-chat" }}
             <div class="b-orange">
                 <div class="b-flex m-10">
-                    {{> Logo class='col-60'}}
+                    {{{ Logo class='col-60'}}}
                     <div class="col-60">
                         <div>
                             {{{ Link href="/pages/profile/profile.html" name='Профиль' class='t-a-с'}}}
@@ -59,32 +60,31 @@ export class ChatPage extends Block<IProp> {
              {{/if}}   
             </div>  
               
-        {{/Form}}</div>`);
+        {{/Form}}</main>`);
   }
 }
 
 registerHelper();
 registerComponent('Chat', Chat);
 registerComponent('Message', Message);
-
 const chatPage = new ChatPage({
-  obj: {
-    chats: [
-      {
-        name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
-      },
-      {
-        name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html',
-      },
-      { name: 'Родительский коммитет', photo: '/assets/img/photo1.jfif', url: '/pages/page404/page404.html' },
-      { name: 'Группа Волшебники, детский сад №27 г. Таганрог, Ростовская обоасти', photo: '/assets/img/photo3.jfif', url: '/pages/page404/page404.html' },
-    ],
-    messages: [
-      { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-      { message: 'Ответ', class: 'answer', date: '19 сентября' },
-      { message: 'Вопрос', class: 'owner', date: '19 сентября' },
-      { message: 'Ответ', class: 'answer', date: '19 сентября' },
-    ],
-  },
+
+  chats: [
+    {
+      name: 'Продажа цветов', count: 20, photo: '/assets/img/photo2.jfif', url: '/pages/page404/page404.html', active: 'active',
+    },
+    {
+      name: 'Береги природу', count: 999, photo: '/assets/img/photo2.jpg', url: '/pages/page404/page404.html',
+    },
+    { name: 'Родительский коммитет', photo: '/assets/img/photo1.jfif', url: '/pages/page404/page404.html' },
+    { name: 'Группа Волшебники, детский сад №27 г. Таганрог, Ростовская обоасти', photo: '/assets/img/photo3.jfif', url: '/pages/page404/page404.html' },
+  ],
+  messages: [
+    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+    { message: 'Ответ', class: 'answer', date: '19 сентября' },
+    { message: 'Вопрос', class: 'owner', date: '19 сентября' },
+    { message: 'Ответ', class: 'answer', date: '19 сентября' },
+  ],
+
 });
 render('#app', chatPage);
