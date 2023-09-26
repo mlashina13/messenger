@@ -39,14 +39,12 @@ export class ChatPage extends Block<IProp> {
                             <a class="col-40 custom-st-href" href="/">Выход</a>
                         </div>
                     </div>
-                </div>
-                <nav>
-                  <ul>
-                      {{#each chats}}
-                          {{{ Chat chat=.}}}
-                      {{/each}}
-                  </ul>
-                </nav>
+                </div>            
+                <ul>
+                    {{#each chats}}
+                        {{{ Chat chat=.}}}
+                    {{/each}}
+                </ul>            
             </div>
             <div class="b-red">
             {{#if  messages}}
