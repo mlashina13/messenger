@@ -35,5 +35,6 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'no-empty-function': 'off',
     'import-notation': 'off',
+    'rule-empty-line-before': 'off',
   },
 };
