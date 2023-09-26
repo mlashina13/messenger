@@ -1,0 +1,19 @@
+@import "./../form/variable.scss";
+
+.message {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.owner {
+    background-color: $dack_blue;
+    color: white;
+}
+
+.answer {
+    background-color: $light_blue;
+    color: black;
+    margin-left: 30px;
+}
+
+

@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "build/*"
+  ],
+  "rules": {
+    "import-notation": "string"
+  }
+}
