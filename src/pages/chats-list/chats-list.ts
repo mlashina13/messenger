@@ -40,17 +40,19 @@ export class ChatPage extends Block<IProp> {
                         </div>
                     </div>
                 </div>
-                <ul>
-                    {{#each chats}}
-                        {{{ Chat chat=.}}}
-                    {{/each}}
-                </ul>
+                <nav>
+                  <ul>
+                      {{#each chats}}
+                          {{{ Chat chat=.}}}
+                      {{/each}}
+                  </ul>
+                </nav>
             </div>
             <div class="b-red">
             {{#if  messages}}
                 {{#each messages}}
                     {{{ Message message=.}}}
-                 {{/each}}
+                {{/each}}
                  <div class="b-flex message-btn">
                     <div class='col-70'>{{{ InputField type='text' placeholder='Введите сообщение' name='message' ref='message' validate=validate.message}}}</div>
                     <div class='col-30'>{{{ Button label='Отправить' onClick=onSend class='b-a-c'}}}</div>

@@ -1,8 +1,8 @@
-
+@import "./../form/variable";
 
 .btn {
   color: white;
-  background-color: #5c56a1;
+  background-color: $blue;
   min-width: 200px;
   width: 100%;
   height: 30px;

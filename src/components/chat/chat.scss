@@ -1,4 +1,4 @@
-
+@import "./../form/variable";
 
 li.chat {
     grid-template-columns: 60px auto 10%;
@@ -6,10 +6,10 @@ li.chat {
     list-style:none;
     display: grid;
     padding: 5px 10px;
-    border-top: 1px solid #f8ea6f;
+    border-top: 1px solid $orange;
 
     &.active {
-        background-color: #f8ea6f;
+        background-color: $orange;
     }
 
     .chat-photo {
@@ -21,7 +21,7 @@ li.chat {
 
     .chat-count {
         width: 25px;
-        background-color: #5c56a1;
+        background-color: $blue;
         border-radius: 50%;
         height: 25px;
         color: #fff;
@@ -39,7 +39,7 @@ li.chat {
 
         a {
             text-decoration: none;
-            color: #5c56a1;
+            color: $blue;
             line-height: 24px;
         }
     }

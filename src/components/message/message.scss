@@ -1,4 +1,4 @@
-
+@import "./../form/variable";
 
 .message {
     padding: 5px;
@@ -6,12 +6,12 @@
 }
 
 .owner {
-    background-color: #5c56a1;
+    background-color: $blue;
     color: white;
 }
 
 .answer {
-    background-color: #bebaed;
+    background-color: $light_blue;
     color: black;
     margin-left: 30px;
 }

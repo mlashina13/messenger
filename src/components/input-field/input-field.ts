@@ -28,7 +28,7 @@ export class InputField extends Block<IProps> {
 
   private validate() {
     const { value } = (this.refs.input.getContent() as HTMLInputElement);
-    const error = this.props.validate(value);
+    const error = this.props?.validate(value);
     if (error) {
       this.refs.errorLine.setProps({ error } as IProps);
       return false;

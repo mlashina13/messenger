@@ -1,11 +1,12 @@
+@import "variable";
 main {
   display: flex;
   font-size: 13px;
   font-family: Arial, sans-serif;
 
   .block {
-    border: 1px solid #f18c8c;
-    box-shadow: 10px 10px 1px #f8ea6f;
+    border: 1px solid $red;
+    box-shadow: 10px 10px 1px $orange;
     padding: 20px;
     width: 400px;
     position: absolute;

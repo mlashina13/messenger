@@ -38,6 +38,14 @@ export class Block <Props extends object > {
     });
   }
 
+  _removeEvents() {
+    const { events = {} } = this.props as { events: Record<string, () => void> };
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -92,6 +100,8 @@ export class Block <Props extends object > {
 
   private _render() {
     const fragment = this.compile(this.render(), this.props);
+
+    if (this.props) this._removeEvents();
 
     const newElement = fragment.firstElementChild as HTMLElement;
 

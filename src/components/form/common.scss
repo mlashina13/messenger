@@ -1,3 +1,4 @@
+@import "variable";
 .m-10 {
   margin: 10px;
 }
@@ -73,7 +74,7 @@
 }
 
 .custom-st-href {
-  color: #f18c8c;
+  color: $red;
   text-decoration: none;
 }
 
@@ -82,7 +83,7 @@
 }
 
 h1 {
-  color: #5c56a1;
+  color: $blue;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
@@ -101,11 +102,11 @@ h1 {
 }
 
 .b-orange {
-  border: 1px solid #f8ea6f;
+  border: 1px solid $orange;
 }
 
 .b-red {
-  border: 1px solid #f18c8c ;
+  border: 1px solid $red ;
 }
 
 .t-gray {
@@ -119,7 +120,7 @@ ul {
 
 .profile-logo {
   width: 60px;
-  background-color: #5c56a1;
+  background-color: $blue;
   border-radius: 50%;
   height: 60px;
   color: #fff;

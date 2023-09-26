@@ -1,13 +1,13 @@
-
+@import "./../form/variable";
 
 .link {
-  color: #5c56a1;
+  color: $blue;
   height: 30px;
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   text-align: center;
-  border: 1px solid  #f18c8c;
+  border: 1px solid  $red;
   display: block;
   position: relative;
 
@@ -15,13 +15,13 @@
     position: absolute;
     top:-4px;
     left: -4px;
-    border: 1px solid #f8ea6f;
+    border: 1px solid $orange;
     width: 100%;
     background-color: white;
 
     a {
       text-decoration: none;
-      color: #b9a705;
+      color: $dark_orange;
     }
   }
 }

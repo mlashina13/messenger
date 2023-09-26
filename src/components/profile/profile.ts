@@ -56,7 +56,7 @@ export class Profile extends Block<IProps> {
             {{{ InputField type='text' placeholder='Фамилия' name='second_name' ref='second_name' validate=validate.name}}}
             {{{ InputField type='text' placeholder='Телефон' name='phone' ref='phone' validate=validate.phone}}}
             {{{ InputField type='password' placeholder='Пароль' name='password' ref='password' validate=validate.password}}}
-            {{{ InputField type='password' placeholder='Повторить пароль' name='retryPassword' ref='retryPassword'}}}
+            {{{ InputField type='password' placeholder='Повторить пароль' name='retryPassword' ref='retryPassword' validate=validate.password}}}
             {{{ Button label='Сохранить' onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10'}}}
         </div>
         {{/Form}}</main>`);
