@@ -1,4 +1,4 @@
-@import "./../form/variable";
+@import "./../form/variable.scss";
 
 .message {
     padding: 5px;
@@ -6,7 +6,7 @@
 }
 
 .owner {
-    background-color: $blue;
+    background-color: $dack_blue;
     color: white;
 }
 

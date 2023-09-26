@@ -1,4 +1,4 @@
-@import "./../form/variable";
+@import "./../form/variable.scss";
 
 li.chat {
     grid-template-columns: 60px auto 10%;
@@ -21,7 +21,7 @@ li.chat {
 
     .chat-count {
         width: 25px;
-        background-color: $blue;
+        background-color: $dack_blue;
         border-radius: 50%;
         height: 25px;
         color: #fff;
@@ -39,7 +39,7 @@ li.chat {
 
         a {
             text-decoration: none;
-            color: $blue;
+            color: $dack_blue;
             line-height: 24px;
         }
     }

@@ -1,11 +1,11 @@
-@import "./../form/variable";
+@import "./../form/variable.scss";
 
 .input {
   position: relative;
   margin-bottom: 5px;
 
   input {
-    color: $blue;
+    color: $dack_blue;
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid $light_blue;
@@ -16,11 +16,11 @@
     margin-bottom: 10px;
 
     &:focus {
-      color: $blue;
+      color: $dack_blue;
     }
 
     &:focus-visible {
-      color: $blue;
+      color: $dack_blue;
       outline: 0
     }
 

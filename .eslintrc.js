@@ -34,5 +34,6 @@ module.exports = {
     'consistent-return': 'off',
     'no-restricted-syntax': 'off',
     'no-empty-function': 'off',
+    'import-notation': 'off',
   },
 };

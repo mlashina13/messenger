@@ -1,4 +1,4 @@
-@import "variable";
+@import "variable.scss";
 .m-10 {
   margin: 10px;
 }
@@ -83,7 +83,7 @@
 }
 
 h1 {
-  color: $blue;
+  color: $dack_blue;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
@@ -120,7 +120,7 @@ ul {
 
 .profile-logo {
   width: 60px;
-  background-color: $blue;
+  background-color: $dack_blue;
   border-radius: 50%;
   height: 60px;
   color: #fff;
