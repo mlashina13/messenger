@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { connect } from '../../utils/connect';
 import { RefType, TChat } from '../../type';
 import { InputField } from '../input-field/input-field';
-import {Select} from "../select/select";
+import { Select } from '../select/select';
 
 interface Props {
     isOpenDialogChat: boolean,
@@ -23,7 +23,8 @@ type Refs = {
 }
 
 export class DialogAddUserToChat extends Block<Props, Refs> {
-    private chatId: number;
+  private chatId: number;
+
   constructor(props: Props) {
     super({
       ...props,
@@ -33,7 +34,7 @@ export class DialogAddUserToChat extends Block<Props, Refs> {
       },
       onClose: () => window.store.set({ isOpenDialogAddUser: false }),
       onGetChat: (event: Event) => {
-          this.chatId = Number((event?.target as HTMLSelectElement)?.value);
+        this.chatId = Number((event?.target as HTMLSelectElement)?.value);
       },
     });
   }
@@ -43,7 +44,7 @@ export class DialogAddUserToChat extends Block<Props, Refs> {
   }
 
   public getChatId() {
-    return this.chatId;//this.refs.select.value();
+    return this.chatId;// this.refs.select.value();
   }
 
   public setError(error: string) {

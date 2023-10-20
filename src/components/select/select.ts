@@ -28,13 +28,13 @@ export class Select extends Block<IProps, Refs> {
     super({
       ...props,
       events: {
-        change: props.onChange || (() => {})
+        change: props.onChange || (() => {}),
       },
     });
   }
 
   public getChatId() {
-    return this.props.list.find(item => item.active)
+    return this.props.list.find((item) => item.active);
   }
 
   /* public value() {

@@ -21,7 +21,7 @@ export type Refs = {
 
 export class Chat extends Block<IProps, Refs> {
   private onChangeMessageCallback: (data: TMessage) => void;
-  private activeChat: boolean = true;
+
   constructor(props: IProps) {
     super(props);
 
