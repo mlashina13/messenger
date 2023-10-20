@@ -42,6 +42,6 @@ module.exports = {
     'no-redeclare': 'off',
     'no-continue': 'off',
     'no-restricted-exports': 'off',
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
   },
 };
