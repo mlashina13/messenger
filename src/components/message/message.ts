@@ -1,4 +1,7 @@
 import Block from '../../core/Block';
+import { TMessage } from '../../type';
+import { connect } from '../../utils/connect';
+import { Chat } from '../chat/chat';
 
 export interface IProps {
     events: { click: () => void };
@@ -6,14 +9,14 @@ export interface IProps {
     ownerText: string;
     answerText: string
     onClick: () => void;
+    message: TMessage;
 }
 
-export class Message extends Block<IProps> {
+type Refs = {}
+
+export class Message extends Block<IProps, Refs> {
   constructor(props: IProps) {
     super(props);
-    this.props.events = {
-      click: this.props.onClick || (() => {}),
-    };
   }
 
   protected render(): string {
@@ -22,3 +25,4 @@ export class Message extends Block<IProps> {
            `);
   }
 }
+export const withStoreMessages = connect((state) => ({ messages: state.messages }))(Chat);

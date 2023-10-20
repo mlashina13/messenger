@@ -10,6 +10,11 @@ export function registerHelper() {
   registerComponent('Link', Components.Link);
   registerComponent('Form', Components.Form);
   registerComponent('Logo', Components.Logo);
+  registerComponent('Select', Components.Select);
+  registerComponent('ChangePassword', Components.ChangePassword);
+  registerComponent('LoadPhoto', Components.LoadPhoto);
+  registerComponent('DialogCreateChat', Components.DialogCreateChat);
+  registerComponent('DialogAddUserToChat', Components.DialogAddUserToChat);
 }
 
 export function render(query: string, block: Block<Object>) {

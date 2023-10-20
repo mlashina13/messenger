@@ -1,0 +1,32 @@
+@import "./../form/variable.scss";
+
+select {
+  position: relative;
+  margin-bottom: 5px;
+  height: 30px;
+  width: 100%;
+  border: 1px solid $light_blue;
+  color: $dack_blue;
+
+  &:focus {
+    color: $dack_blue;
+  }
+
+  &:focus-visible {
+    color: $dack_blue;
+    outline: 0
+  }
+
+  &::placeholder {
+    color: $light_blue;
+  }
+
+  .error {
+    position: absolute;
+    top: 33px;
+    color: $red;
+    font-size: 9px;
+    padding: 0 5px;
+    line-height: 9px;
+  }
+}

@@ -2,16 +2,19 @@ import Block from '../../core/Block';
 
 export interface IProps {
     error: string
+    class: string;
 }
 
-export class Error extends Block<IProps> {
+export type Refs = {}
+
+export class Error extends Block<IProps, Refs> {
   constructor(props: IProps) {
     super(props);
   }
 
   protected render(): string {
     return (`           
-                <div class="error">{{error}}</div>         
+                <div class='error'>{{error}}</div>         
         `);
   }
 }

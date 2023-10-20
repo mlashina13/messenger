@@ -36,5 +36,12 @@ module.exports = {
     'no-empty-function': 'off',
     'import-notation': 'off',
     'rule-empty-line-before': 'off',
+    'no-undef': 'off',
+    'no-constructor-return': 'off',
+    'no-shadow': 'off',
+    'no-redeclare': 'off',
+    'no-continue': 'off',
+    'no-restricted-exports': 'off',
+    'no-plusplus': 'off'
   },
 };

@@ -18,6 +18,13 @@ export function validationLogin(str: string): string {
   return str.length < 3 ? 'Длина поля должна быть больше 3-х символов' : '';
 }
 
+export function validationRetryPassword(password: string, retryPassword: string): string {
+  if (password !== retryPassword) {
+    return 'Пароли не совпадают.';
+  }
+  return '';
+}
+
 export function validationPassword(str: string): string {
   if (!RegExp(/(?=.*[0-9])/).test(str)) {
     return 'Пароль должен содержать хотя бы одно число.';

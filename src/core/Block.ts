@@ -1,17 +1,19 @@
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
+import { RefType } from '../type';
 
-export class Block <Props extends object > {
+export class Block <Props extends object, Refs extends RefType = RefType > {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
+    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render',
   };
 
   protected props: Props;
 
-  protected refs: Record<string, Block<Props>> = {};
+  protected refs: Refs = {} as Refs;
 
   protected children: Block<object>[] = [];
 
@@ -50,6 +52,7 @@ export class Block <Props extends object > {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
@@ -62,11 +65,33 @@ export class Block <Props extends object > {
   }
 
   _componentDidMount() {
+    this._checkInDom();
     this.componentDidMount();
   }
 
   componentDidMount() {
   }
+
+  /**
+   * Хелпер, который проверяет, находится ли элемент в DOM дереве
+   * И есть нет, триггерит событие COMPONENT_WILL_UNMOUNT
+   */
+  _checkInDom() {
+    const elementInDOM = document.body.contains(this._element);
+
+    if (elementInDOM) {
+      setTimeout(() => this._checkInDom(), 1000);
+      return;
+    }
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
+  }
+
+  _componentWillUnmount() {
+    this.componentWillUnmount();
+  }
+
+  componentWillUnmount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -127,11 +152,20 @@ export class Block <Props extends object > {
 
     templ.innerHTML = html;
 
+    const fragment = templ.content;
+
+    /*   this.refs = Array.from(fragment.querySelectorAll('[ref]')).reduce((list, element) => {
+      const key = element.getAttribute('ref')!;
+      list[key as keyof typeof list ] = element as HTMLElement;
+      element.removeAttribute('ref');
+      return list;
+    }, contextAndStubs.__refs as Refs); */
+
     contextAndStubs.__children?.forEach((item) => {
       item.embed(templ.content);
     });
 
-    return templ.content;
+    return fragment;
   }
 
   protected render(): string {
@@ -139,6 +173,17 @@ export class Block <Props extends object > {
   }
 
   getContent() {
+    // Хак, чтобы вызвать CDM только после добавления в DOM
+    if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+      setTimeout(() => {
+        if (
+          this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE
+        ) {
+          this.dispatchComponentDidMount();
+        }
+      }, 100);
+    }
+
     return this.element;
   }
 

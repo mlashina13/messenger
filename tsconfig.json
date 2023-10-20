@@ -15,8 +15,8 @@
     "noImplicitAny": true,
     "noUnusedParameters": true,
     "sourceMap": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "typeRoots": ["node_modules/@types", "typings/app.d.ts"]
   },
-  "typeRoots": ["types"],
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

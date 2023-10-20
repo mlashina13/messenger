@@ -4,12 +4,14 @@ export interface IProps {
     class: string,
 }
 
-export class Form extends Block<IProps> {
+export type Refs = {}
+
+export class Form extends Block<IProps, Refs> {
   constructor(props: IProps) {
     super(props);
   }
 
   protected render(): string {
-    return ('<form class="{{class}}">{{ @partial-block }}</form>');
+    return ('<formx class="{{class}}">{{ @partial-block }}</formx>');
   }
 }

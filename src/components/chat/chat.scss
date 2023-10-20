@@ -7,6 +7,7 @@ li.chat {
     display: grid;
     padding: 5px 10px;
     border-top: 1px solid $orange;
+    cursor: pointer;
 
     &.active {
         background-color: $orange;
@@ -17,6 +18,16 @@ li.chat {
         border-radius: 50%;
         height: 50px;
         object-fit: cover;
+    }
+
+    .no-photo {
+        width: 50px;
+        height: 38px;
+        line-height: 12px;
+        font-weight: bold;
+        color: #5c56a1;
+        padding-top: 12px;
+        opacity: 0.5;
     }
 
     .chat-count {

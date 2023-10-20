@@ -2,17 +2,22 @@ import Handlebars, { HelperOptions } from 'handlebars';
 import { nanoid } from 'nanoid';
 import Block from './Block';
 
-export interface BlockComponent {
+interface BlockComponent {
   element(): Element;
 }
 
-export interface BlockComponentClass<T> extends BlockComponent{
+interface BlockComponentClass<T> extends BlockComponent{
   new (props: unknown): T
 }
 
 // type ComponentType<T extends BlockComponentClass<T>> = {new (props: ConstructorParameters<InstanceType<T>>[0]): InstanceType<T>}
 
+interface BlockComponentClass<T> {
+  new (props: unknown): T;
+}
+
 export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: typeof Block<Object>) {
+// export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: typeof Block<Object>) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`;
   }

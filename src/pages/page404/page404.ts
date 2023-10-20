@@ -2,9 +2,10 @@ import Block from '../../core/Block';
 import { registerHelper, render } from '../../core/registerHelper';
 // import { registerComponent } from '../../core/resgiterComponent';
 
-export interface IProp {
-}
-export class Page404 extends Block<IProp> {
+export interface IProp {}
+
+type Refs = {}
+export class Page404 extends Block<IProp, Refs> {
   constructor() {
     super();
   }
