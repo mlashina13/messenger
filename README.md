@@ -4,26 +4,46 @@
 Макты дийна приложения:
 https://www.figma.com/file/9azfiQysaaWXFfVW5imPK0/Untitled?type=design&node-id=0-1&mode=design&t=Bgxa5eYgu0rWgSNS-0
 
-В приложении имеются следующие страницы:
+**В приложении имеются следующие страницы:**
 - главная страница https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/
-- Авторизация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/login/login
-- Профиль - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/profile
-- Регистрация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/registration/registration
-- Список чатов - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/chats-list/chats-list
-- Ошибка - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/page404/page404
-- Страница не найдена - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/page500/page500
+- Авторизация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/ или https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/login
+- Профиль - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/settings 
+- Регистрация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/sign-up
+- Список чатов - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/messenger 
+Страница входа:
+Пользователь может залогиниться и войти в систему, для общения.
+Если ввод данных, окажется некорректный, пользователь получить сообщение об ошибке.
 
-Добавлена проверка валидации полей на страницах:
-- Авторизация (проверка логина и пароля)
-- Профиль и Регистрация (проверка правильности ввода данных пользователя)
-- Список чатов (проверка на ввод пустого сообщения)
+**Страница регистрация.** 
+Любой пользователь, может зарегистрироваться в системе, для этого необходимо пройти регистрацию на странице: 
+https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/sign-up
+После заполнения всех обязательных полей, вас перенаправит на страницу с чатами
+Попасть на регистрацию, можно только со страницы входа.
 
-Добавлен класс для работы с запросами
+**Страница чатов.**
+https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/messenger
+Войдя в систему, пользователю возможны следующие действия:
+1) Изменить свой профиль
+2) Выйти из системы. 
+3) Создать свой чат. 
+При создании чата, необходимо заполнить обязательное поле- наименование, после чего чат будет добавлен в систему и отобразится на экране
+4) Добавить пользователя в чат.
+Для добавления пользователя в чат, необходимо ввести его логин и выбрать чат, в который вы хотите его добавить
+5) Выбрать чат для общения
+При выборе чата, у пользователя отобразится окно, в котором он сможет начать общение.
 
-Запуск проекта:
+**Страница изменения профиля.**
+https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/settings
+На данной странице пользователь доступны следующие действия:
+1) Изменить аватарку
+2) Изменить пароль
+3) Изменить данные о себе
+ 
+
+**Запуск проекта:**
 - npm i
 - npm run start
 -приложение запукается по ссылке  http://localhost:3000/
 
-Разработчик:
+**Разработчик:**
 - Мария
