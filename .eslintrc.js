@@ -44,6 +44,6 @@ module.exports = {
     'no-restricted-exports': 'off',
     'no-plusplus': 'off',
     'comma-dangle': 'off',
-    'semi': 'off'
+    semi: 'off'
   },
 };
