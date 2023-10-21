@@ -5,7 +5,7 @@ import { Message } from '../../components/message/message';
 import { RefType, TUser } from '../../type';
 import { initChatPage } from '../../services/initApp';
 import { Chat } from '../../components/chat';
-import { addUserToChatService, createChatService } from '../../services/chat';
+import {addUserToChatService, createChatService, deleteUserToChatService} from '../../services/chat';
 import { DialogCreateChat } from '../../components/create-chat/dialog-create-chat';
 import { DialogAddUserToChat } from '../../components/add-user/add-user';
 import { getUserByLogin } from '../../services/user';
@@ -18,7 +18,8 @@ export interface IProps {
     openDialogChat: (e: Event) => void;
     onCreateChat: (e: Event) => void;
     openDialogUser: (e: Event) => void;
-    onAddUserToChat: () => void
+    onAddUserToChat: () => void;
+    onRemoveUserToChat: () => void;
     chats: Chat[];
     onLogout: () => void;
     user: TUser,
@@ -92,6 +93,29 @@ export class ChatPage extends Block<IProps, Refs> {
           this.refs.addUserToChat.setError('Не заполнены обязательные поля');
         }
       },
+      onRemoveUserToChat: () => {
+          const login = this.refs.addUserToChat.getUserLogin();
+              const chatId = this.refs.addUserToChat.getChatId();
+              if (login && chatId) {
+                  getUserByLogin(login).then((users: TUser[]) => {
+                      if (users.length) {
+                          const userId = users.find((user) => user.login === login)?.id.toString();
+                          deleteUserToChatService({users: userId ? [userId] : [], chatId: +chatId}).then(() => {
+                              window.store.set({isOpenDialogAddUser: false});
+                          }).catch((error: XMLHttpRequest) => {
+                              this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
+                          });;
+                      } else {
+                          this.refs.addUserToChat.setError('Такого пользователя не существует');
+                      }
+                  }).catch((error: XMLHttpRequest) => {
+                      this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
+                  });
+              } else {
+                  this.refs.addUserToChat.setError('Не заполнены обязательные поля');
+              }
+
+          },
       onLogout: () => {
         logout();
       },
@@ -104,8 +128,8 @@ export class ChatPage extends Block<IProps, Refs> {
     return (`{{# Form class="block-chat" }}
             <div class="b-orange">
                 <div class="b-flex m-10">
-                    {{{ Logo class='col-60'}}}
-                    <div class="col-60">
+                    {{{ Logo class='col-40'}}}
+                    <div class="col-80">
                         <h4>{{user.first_name}} {{user.second_name}}</h4>
                         <div>
                             {{{ Link href="/settings" name='Профиль' class='t-a-с'}}}
@@ -118,8 +142,8 @@ export class ChatPage extends Block<IProps, Refs> {
                             {{{DialogCreateChat ref='createChat' onSave=onCreateChat}}}
                         </div>
                         <div> 
-                            {{{ Button label='Добавить пользователя в чат' onClick=openDialogUser class='b-a-c m-t-20 m-b-10 m-t-10'}}}
-                            {{{DialogAddUserToChat ref='addUserToChat' chats=chats onSave=onAddUserToChat}}}
+                            {{{ Button label='Добавить/удалить пользователя' onClick=openDialogUser  class='b-a-c m-t-20 m-b-10 m-t-10'}}}
+                            {{{DialogAddUserToChat ref='addUserToChat' chats=chats onSave=onAddUserToChat onRemove=onRemoveUserToChat}}}
                         </div>                        
                     </div>
                 </div>            

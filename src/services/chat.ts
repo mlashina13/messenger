@@ -29,6 +29,13 @@ const createChatService = async (title: string) => {
   window.store.set({ chats });
 };
 
+const deleteUserToChatService = async (data: TAddUsers) => {
+  const response = await chatApi.deleteUser(data);
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+};
+
 const addUserToChatService = async (data: TAddUsers) => {
   const response = await chatApi.addUser(data);
   if (apiHasError(response)) {
@@ -49,4 +56,5 @@ export {
   getChatsService,
   getTokenService,
   addUserToChatService,
+  deleteUserToChatService
 };

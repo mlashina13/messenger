@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { validationLogin, validationPassword } from '../../core/validations';
-import { signin } from '../../services/auth';
+import {getUser, signin} from '../../services/auth';
 import { navigation } from '../../utils/navigation';
 import { InputField } from '../../components';
 import { ErrorType } from '../../api/type';
@@ -34,7 +34,11 @@ export class LoginPage extends Block<IProps, Refs> {
             login,
             password,
           }).catch((error: XMLHttpRequest) => {
-            this.refs.errorLine.setProps({ error: (error?.response as ErrorType).reason });
+            getUser().then(() => {
+              navigation('/messenger')
+            }).catch(() => {
+              this.refs.errorLine.setProps({error: (error?.response as ErrorType).reason});
+            })
           });
         }
       },
@@ -64,7 +68,3 @@ export class LoginPage extends Block<IProps, Refs> {
         {{/Form}}</main>`);
   }
 }
-
-// registerHelper();
-// const loginPage = new LoginPage();
-// render('#app', loginPage);

@@ -35,6 +35,10 @@ export class HttpTransport {
     return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.PUT, data, headers);
   }
 
+  delete<TResponse>(url: string, data?: Object, headers?: Object): Promise<TResponse> {
+    return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.DELETE, data, headers);
+  }
+
   async request<TResponse>(url: string, method:string, data?: Object, headers?: Object): Promise<TResponse> {
     if (!method) { method = METHODS.GET; }
 

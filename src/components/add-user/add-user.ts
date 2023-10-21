@@ -61,6 +61,7 @@ export class DialogAddUserToChat extends Block<Props, Refs> {
                     <div>{{{Select ref='select' list=chats onChange=onGetChat validate=validate.checkSelect}}}</div>
                      {{{ Error class='error' ref="errorLine"}}}        
                      {{{ Button label="Добавить" onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10' }}}
+                     {{{ Button label="Удалить" onClick=onRemove class='b-a-c m-t-20 m-b-10 m-t-10 btn-danger' }}}
                      {{{ Button label="Отмена" onClick=onClose class='b-a-c m-t-20 m-b-10 m-t-10 btn-default' }}}
                     </div>  
                    

@@ -5,11 +5,10 @@
 https://www.figma.com/file/9azfiQysaaWXFfVW5imPK0/Untitled?type=design&node-id=0-1&mode=design&t=Bgxa5eYgu0rWgSNS-0
 
 **В приложении имеются следующие страницы:**
-- главная страница https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/
-- Авторизация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/ или https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/login
-- Профиль - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/settings 
-- Регистрация - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/sign-up
-- Список чатов - https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/messenger 
+- Авторизация - https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/ или https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/login
+- Профиль - https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/settings 
+- Регистрация - https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/sign-up
+- Список чатов - https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/messenger 
 Страница входа:
 Пользователь может залогиниться и войти в систему, для общения.
 Если ввод данных, окажется некорректный, пользователь получить сообщение об ошибке.
@@ -21,7 +20,7 @@ https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/sign-up
 Попасть на регистрацию, можно только со страницы входа.
 
 **Страница чатов.**
-https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/messenger
+https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/messenger 
 Войдя в систему, пользователю возможны следующие действия:
 1) Изменить свой профиль
 2) Выйти из системы. 
@@ -33,7 +32,7 @@ https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/messenger
 При выборе чата, у пользователя отобразится окно, в котором он сможет начать общение.
 
 **Страница изменения профиля.**
-https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/pages/profile/settings
+https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/settings 
 На данной странице пользователь доступны следующие действия:
 1) Изменить аватарку
 2) Изменить пароль

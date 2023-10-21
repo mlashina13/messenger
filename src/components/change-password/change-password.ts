@@ -51,11 +51,12 @@ export class ChangePassword extends Block<IProps, Refs> {
               <h1>Изменение пароля</h1>  
               {{{ InputField type='password' placeholder='Старый пароль' name='oldPassword' ref='oldPassword' validate=validate.password}}}
               {{{ InputField type='password' placeholder='Новый пароль' name='newPassword'  ref='newPassword' validate=validate.password}}}
+              <div>{{{ Error class='error' ref="errorLine"}}} </div>
                <div>
                  {{{ Button label="Изменить" onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10' }}}
                  {{{ Button label="Отмена" onClick=onClose class='b-a-c m-t-20 m-b-10 m-t-10 btn-default' }}}
                 </div>
-                <div>{{{ Error class='error' ref="errorLine"}}} </div>
+                
              {{/Dialog}}`);
   }
 }

@@ -13,6 +13,10 @@ export default class ChatApi {
     return chatApi.get<ChatDTO[]>('');
   }
 
+  async deleteUser(data: TAddUsers): Promise<void | APIError > {
+    return chatApi.delete<void>('/users', data);
+  }
+
   async addUser(data: TAddUsers): Promise<void | APIError > {
     return chatApi.put<void>('/users', data);
   }
