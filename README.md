@@ -15,7 +15,7 @@ https://www.figma.com/file/9azfiQysaaWXFfVW5imPK0/Untitled?type=design&node-id=0
 
 **Страница регистрация.** 
 Любой пользователь, может зарегистрироваться в системе, для этого необходимо пройти регистрацию на странице: 
-https://deploy-preview-8--dancing-granita-ec34c4.netlify.app/sign-up
+https://deploy-preview-9--dancing-granita-ec34c4.netlify.app/sign-up
 После заполнения всех обязательных полей, вас перенаправит на страницу с чатами
 Попасть на регистрацию, можно только со страницы входа.
 
