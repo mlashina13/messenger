@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { validationLogin, validationPassword } from '../../core/validations';
-import {getUser, signin} from '../../services/auth';
+import { getUser, signin } from '../../services/auth';
 import { navigation } from '../../utils/navigation';
 import { InputField } from '../../components';
 import { ErrorType } from '../../api/type';
@@ -37,7 +37,7 @@ export class LoginPage extends Block<IProps, Refs> {
             getUser().then(() => {
               navigation('/messenger')
             }).catch(() => {
-              this.refs.errorLine.setProps({error: (error?.response as ErrorType).reason});
+              this.refs.errorLine.setProps({ error: (error?.response as ErrorType).reason });
             })
           });
         }

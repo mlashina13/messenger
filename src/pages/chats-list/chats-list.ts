@@ -5,7 +5,7 @@ import { Message } from '../../components/message/message';
 import { RefType, TUser } from '../../type';
 import { initChatPage } from '../../services/initApp';
 import { Chat } from '../../components/chat';
-import {addUserToChatService, createChatService, deleteUserToChatService} from '../../services/chat';
+import { addUserToChatService, createChatService, deleteUserToChatService } from '../../services/chat';
 import { DialogCreateChat } from '../../components/create-chat/dialog-create-chat';
 import { DialogAddUserToChat } from '../../components/add-user/add-user';
 import { getUserByLogin } from '../../services/user';
@@ -94,28 +94,27 @@ export class ChatPage extends Block<IProps, Refs> {
         }
       },
       onRemoveUserToChat: () => {
-          const login = this.refs.addUserToChat.getUserLogin();
-              const chatId = this.refs.addUserToChat.getChatId();
-              if (login && chatId) {
-                  getUserByLogin(login).then((users: TUser[]) => {
-                      if (users.length) {
-                          const userId = users.find((user) => user.login === login)?.id.toString();
-                          deleteUserToChatService({users: userId ? [userId] : [], chatId: +chatId}).then(() => {
-                              window.store.set({isOpenDialogAddUser: false});
-                          }).catch((error: XMLHttpRequest) => {
-                              this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
-                          });;
-                      } else {
-                          this.refs.addUserToChat.setError('Такого пользователя не существует');
-                      }
-                  }).catch((error: XMLHttpRequest) => {
-                      this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
-                  });
-              } else {
-                  this.refs.addUserToChat.setError('Не заполнены обязательные поля');
-              }
-
-          },
+        const login = this.refs.addUserToChat.getUserLogin();
+        const chatId = this.refs.addUserToChat.getChatId();
+        if (login && chatId) {
+          getUserByLogin(login).then((users: TUser[]) => {
+            if (users.length) {
+              const userId = users.find((user) => user.login === login)?.id.toString();
+              deleteUserToChatService({ users: userId ? [userId] : [], chatId: +chatId }).then(() => {
+                window.store.set({ isOpenDialogAddUser: false });
+              }).catch((error: XMLHttpRequest) => {
+                this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
+              });
+            } else {
+              this.refs.addUserToChat.setError('Такого пользователя не существует');
+            }
+          }).catch((error: XMLHttpRequest) => {
+            this.refs.addUserToChat.setError((error?.response as ErrorType).reason);
+          });
+        } else {
+          this.refs.addUserToChat.setError('Не заполнены обязательные поля');
+        }
+      },
       onLogout: () => {
         logout();
       },
