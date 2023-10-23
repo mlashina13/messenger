@@ -37,23 +37,22 @@ export class Chat extends Block<IProps, Refs> {
         }
         this.props.active = true;
         store.set({ blockMessage: false });
-        let messages: { message: string; class: string }[] = [];
-        if (chat?.last_message && chat?.last_message?.content) {
-          messages = [{
-            class: chat.last_message?.user?.login === store?.getState()?.user?.login ? 'owner' : 'answer',
-            message: chat.last_message.content,
-          }];
-        }
-        store.set({ messages });
 
-        this.onChangeMessageCallback = (data: TMessage) => {
-          let type = data?.user_id === userId ? 'owner' : 'answer';
+        this.onChangeMessageCallback = (data: TMessage | TMessage[]) => {
+          const newMessage = [];
           const oldMessage = store.getState()?.messages;
-          if (data?.type === 'user connected') {
-            data.content = `Пользователь ${data.content} вошел в чат`;
-            type = 'join-user';
+          if (data instanceof Array) {
+            data.forEach((message) => {
+              newMessage.push({ class: message?.user_id === userId ? 'owner' : 'answer', message: message.content });
+            })
+          } else {
+            let type = data?.user_id === userId ? 'owner' : 'answer';
+            if (data?.type === 'user connected') {
+              data.content = `Пользователь ${data.content} вошел в чат`;
+              type = 'join-user';
+            }
+            newMessage.push({ class: type, message: data.content });
           }
-          const newMessage = [{ class: type, message: data.content }];
           const messages = [...oldMessage, ...newMessage];
           store.set({ messages });
         };
@@ -63,7 +62,9 @@ export class Chat extends Block<IProps, Refs> {
             store.set({ socket: new WebSocketTransport(`/${userId}/${chat.id}/${resp?.token}`) });
             const socket = store.getState()?.socket;
             if (socket) {
-              socket.connect();
+              socket.connect().then(() => {
+                socket.send({ content: '0', type: 'get old' });
+              });
               socket.on(WSEvents.Close, () => {
                 socket.close();
                 store.set({ blockMessage: true });
@@ -75,10 +76,6 @@ export class Chat extends Block<IProps, Refs> {
         }
       },
     };
-  }
-
-  public getStatus() {
-
   }
 
   protected render(): string {

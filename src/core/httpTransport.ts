@@ -5,7 +5,9 @@ const METHODS = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
-};
+} as const;
+
+type HTTPMethod = <R=unknown>(url: string, data?: Object, headers?: Object) => Promise<R>
 
 export class HttpTransport {
   private apiUrl: string = '';
@@ -23,33 +25,24 @@ export class HttpTransport {
     return res;
   }
 
-  get<TResponse>(url: string, data?: Object, headers?: Object) : Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.GET, data, headers);
+  get: HTTPMethod = (url, data = {}, headers = {}) => {
+    url = data ? `${this.apiUrl}${url}${this.queryStringify(data)}` : `${this.apiUrl}${url}`;
+    return this.request(url, METHODS.GET, data, headers);
   }
 
-  post<TResponse>(url: string, data?: Object, headers?: Object): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.POST, data, headers);
-  }
+  post: HTTPMethod = (url, data = {}, headers = {}) => this.request(`${this.apiUrl}${url}`, METHODS.POST, data, headers)
 
-  put<TResponse>(url: string, data?: Object, headers?: Object): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.PUT, data, headers);
-  }
+  put: HTTPMethod = (url, data = {}, headers = {}) => this.request(`${this.apiUrl}${url}`, METHODS.PUT, data, headers)
 
-  delete<TResponse>(url: string, data?: Object, headers?: Object): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, METHODS.DELETE, data, headers);
-  }
+  delete: HTTPMethod = (url, data = {}, headers = {}) => this.request(`${this.apiUrl}${url}`, METHODS.DELETE, data, headers)
 
-  async request<TResponse>(url: string, method:string, data?: Object, headers?: Object): Promise<TResponse> {
+  async request<TResponse>(url: string, method: string, data?: Object, headers?: Object): Promise<TResponse> {
     if (!method) { method = METHODS.GET; }
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      // xhr.timeout = timeout;
-
-      xhr.open(method, method === METHODS.GET && !!data
-        ? `${url}${this.queryStringify(data)}`
-        : url);
+      xhr.open(method, url);
 
       if (headers) {
         for (const [key, value] of Object.entries(headers)) {
@@ -74,7 +67,7 @@ export class HttpTransport {
       };
       xhr.ontimeout = reject;
 
-      if (method === METHODS.GET || !data) {
+      if (METHODS.GET || !data) {
         xhr.send();
       } else if (data instanceof FormData) {
         xhr.send(data);

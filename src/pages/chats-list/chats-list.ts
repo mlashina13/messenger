@@ -59,9 +59,11 @@ export class ChatPage extends Block<IProps, Refs> {
         event.preventDefault();
         const { store } = window;
         const message = this.refs.message.value();
-        const socket = store.getState()?.socket;
-        if (socket) socket.send({ content: message.toString(), type: 'message' });
-        this.refs.message.setProps({ value: '' });
+        if (message) {
+          const socket = store.getState()?.socket;
+          if (socket) socket.send({ content: message.toString(), type: 'message' });
+          this.refs.message.setProps({ value: '' });
+        }
       },
       onCreateChat: () => {
         const chatTitle = this.refs.createChat.getChatTitle();
@@ -145,23 +147,26 @@ export class ChatPage extends Block<IProps, Refs> {
                             {{{DialogAddUserToChat ref='addUserToChat' chats=chats onSave=onAddUserToChat onRemove=onRemoveUserToChat}}}
                         </div>                        
                     </div>
-                </div>            
-                <ul>
-                    {{#each chats}}
-                        {{{ Chat chat=.  ref='chat' }}}
-                    {{/each}}
-                </ul>            
+                </div> 
+                <div id="chats">           
+                    <ul>
+                        {{#each chats}}
+                            {{{ Chat chat=.  ref='chat' }}}
+                        {{/each}}
+                    </ul>  
+                 </div>          
             </div>
             <div class="b-red">
                 <h4 class="t-gray x12-size-size m-t-10 m-l-10 {{#if blockMessage}}show{{else}}hide{{/if}}"  ">Выберите чат чтобы отправить сообщение</h4>                
-                {{#each messages}}
-                    {{{ Message message=. ref='message'}}}
-                {{/each}}
-                <div id="messages"></div>
-                 <div class="b-flex message-btn">
+                <div id="messages">
+                    {{#each messages}}
+                        {{{ Message message=. ref='message'}}}
+                    {{/each}}   
+                 </div>             
+                 <div class="b-flex message-btn">                    
                     <div class='col-70'>{{{ InputField type='text' disabled=blockMessage placeholder='Введите сообщение' name='message' ref='message' validate=validate.message}}}</div>
                     <div class='col-30'>{{{ Button label='Отправить' disabled=blockMessage onClick=onSend class='b-a-c'}}}</div>
-                </div>  
+                  </div> 
                 <div>{{{ Error class='error' ref="errorLine"}}}</div>
             </div>  
               

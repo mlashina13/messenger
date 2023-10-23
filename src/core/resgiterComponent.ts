@@ -10,8 +10,6 @@ interface BlockComponentClass<T> extends BlockComponent{
   new (props: unknown): T
 }
 
-// type ComponentType<T extends BlockComponentClass<T>> = {new (props: ConstructorParameters<InstanceType<T>>[0]): InstanceType<T>}
-
 interface BlockComponentClass<T> {
   new (props: unknown): T;
 }

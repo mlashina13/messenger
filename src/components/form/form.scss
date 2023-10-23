@@ -67,6 +67,11 @@ main {
       width: 100%;
     }
 
+    #chats {
+      height: calc(100vh - 300px);
+      overflow: auto;
+    }
+
     #messages {
       height: calc(100vh - 106px);
       overflow: auto;

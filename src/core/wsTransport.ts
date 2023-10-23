@@ -24,7 +24,11 @@ export class WebSocketTransport extends EventBus {
     if (!this.socket) {
       throw Error('Соединение потеряно');
     }
-    this.socket.send(JSON.stringify(data));
+    try {
+      this.socket.send(JSON.stringify(data));
+    } catch {
+      console.log('Ошибка отправк сообщения');
+    }
   }
 
   public connect(): Promise<void> {
@@ -52,7 +56,7 @@ export class WebSocketTransport extends EventBus {
   private setPing() {
     this.ping = setInterval(() => {
       this.send({ type: 'ping' });
-    }, 3000);
+    }, 30000);
   }
 
   private subscribe(socket: WebSocket) {

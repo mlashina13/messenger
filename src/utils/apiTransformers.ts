@@ -1,12 +1,12 @@
 import { ChatDTO } from '../api/type';
 import { TChat, TUser } from '../type';
+import constain from '../core/constain';
 
 const buildPathToResource = (resource: string | null) => {
   if (!resource) {
     return null;
   }
-  const HOST = 'https://ya-praktikum.tech/api/v2';
-  return `${HOST}/resources/${resource}`;
+  return `${constain.HOST}/resources/${resource}`;
 };
 
 export const transformUser = (data: TUser): TUser => <TUser>{
