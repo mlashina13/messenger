@@ -37,24 +37,6 @@ export class Select extends Block<IProps, Refs> {
     return this.props.list.find((item) => item.active);
   }
 
-  /* public value() {
-    if (!this.validate()) {
-      return '';
-    }
-    return  this.refs.select ;
-  }
-
-  private validate() {
-    const error = this.props?.validate(this.refs.select.value());
-   // const error = this.props?.validate(this.refs.select)
-    if (!error) {
-      this.refs.errorLine.setProps({ error } as IProps);
-      return false;
-    }
-    this.refs.errorLine.setProps({ error: '' } as IProps);
-    return true;
-  } */
-
   protected render(): string {
     return (`<div>
             <select>

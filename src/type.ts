@@ -66,7 +66,8 @@ export type TChat = {
     title: string,
     avatar: Nullable<string>,
     unreadCount: number,
-    last_message: TLastMessage | null
+    last_message: TLastMessage | null,
+    active?: boolean
 }
 
 export type RefType = {

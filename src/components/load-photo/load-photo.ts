@@ -29,7 +29,7 @@ export class LoadPhoto extends Block<IProps, Refs> {
 
   render() {
     return (`{{#Dialog open=isOpenLoadPhoto}}    
-              <h1>Изменение пароля</h1>  
+              <h1>Изменение фотографии</h1>  
                {{{Input type='file' placeholder='Загрузить фото' name='loadPhoto' ref='loadPhoto' }}}
                <div>
                  {{{ Button label="Сохранить" onClick=onSave class='b-a-c m-t-20 m-b-10 m-t-10' }}}

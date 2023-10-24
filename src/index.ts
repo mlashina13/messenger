@@ -47,6 +47,5 @@ function filter(e: MouseEvent) {
 window.addEventListener('popstate', history, false);
 function history(popstateEvent: PopStateEvent) {
   console.log(popstateEvent);
-  // document.title = popstateEvent.state.title;
   back(popstateEvent.state.pathname);
 }

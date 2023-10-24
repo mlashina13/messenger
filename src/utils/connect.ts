@@ -1,7 +1,7 @@
 import Block from '../core/Block';
 import { StoreEvents } from '../core/Store';
 import { TAppState, RefType } from '../type';
-import isEqual from './isEqual';
+import isEqual from '../core/isEqual';
 
 export function connect(mapStateToProps: (state: TAppState) => Partial<TAppState>) {
   return function<P extends object, R extends RefType> (Component: typeof Block<P, R>) {

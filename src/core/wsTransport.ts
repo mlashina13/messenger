@@ -27,7 +27,7 @@ export class WebSocketTransport extends EventBus {
     try {
       this.socket.send(JSON.stringify(data));
     } catch {
-      console.log('Ошибка отправк сообщения');
+      console.log('Ошибка отправки сообщения');
     }
   }
 
@@ -78,12 +78,16 @@ export class WebSocketTransport extends EventBus {
     socket.addEventListener('message', (event) => {
       console.log('Получены данные', event.data);
 
-      const data = JSON.parse(event.data);
+      try {
+        const data = JSON.parse(event.data);
 
-      if (['pong'].includes(data?.type)) {
-        return;
+        if (['pong'].includes(data?.type)) {
+          return;
+        }
+        this.emit(WSEvents.Message, data);
+      } catch {
+        console.log('Ошибка отправки сообщения');
       }
-      this.emit(WSEvents.Message, data);
     });
 
     socket.addEventListener('error', (event) => {

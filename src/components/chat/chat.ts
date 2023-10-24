@@ -31,16 +31,19 @@ export class Chat extends Block<IProps, Refs> {
         const { chat } = this.props;
         const userId = store?.getState()?.user?.id;
         event.preventDefault();
-        const chatItems = document.getElementsByClassName('chat active');
-        for (let i = 0; i < chatItems.length; i++) {
-          chatItems[i].classList.remove('active');
+        const chats = store.getState()?.chats;
+        if (chats) {
+          chats.forEach((item) => { item.active = false })
         }
-        this.props.active = true;
-        store.set({ blockMessage: false });
+        store.set({ chats });
+        this.props.chat.active = true;
+        store.set({ messages: [] });
 
         this.onChangeMessageCallback = (data: TMessage | TMessage[]) => {
           const newMessage = [];
           const oldMessage = store.getState()?.messages;
+          store.set({ blockMessage: false });
+
           if (data instanceof Array) {
             data.forEach((message) => {
               newMessage.push({ class: message?.user_id === userId ? 'owner' : 'answer', message: message.content });
@@ -63,6 +66,7 @@ export class Chat extends Block<IProps, Refs> {
             const socket = store.getState()?.socket;
             if (socket) {
               socket.connect().then(() => {
+                store.set({ blockMessage: true });
                 socket.send({ content: '0', type: 'get old' });
               });
               socket.on(WSEvents.Close, () => {
@@ -80,7 +84,7 @@ export class Chat extends Block<IProps, Refs> {
 
   protected render(): string {
     return (`
-           <li class="chat {{#if active}}active{{/if}}" id="{{chat.id}}" >
+           <li class="chat {{#if chat.active}}active{{/if}}" id="{{chat.id}}" >
                 <div>
                 {{#if chat.avatar}}
                     <img class="chat-photo" src="{{chat.avatar}}"/>

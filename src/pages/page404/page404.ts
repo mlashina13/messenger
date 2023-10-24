@@ -1,6 +1,5 @@
 import Block from '../../core/Block';
 import { registerHelper, render } from '../../core/registerHelper';
-// import { registerComponent } from '../../core/resgiterComponent';
 
 export interface IProp {}
 

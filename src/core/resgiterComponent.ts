@@ -15,7 +15,6 @@ interface BlockComponentClass<T> {
 }
 
 export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: typeof Block<Object>) {
-// export function registerComponent<T extends BlockComponentClass<T>>(name: string, Component: typeof Block<Object>) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`;
   }
