@@ -4,7 +4,9 @@ export interface IProps {
     class: string,
 }
 
-export class Logo extends Block<IProps> {
+type Refs = {}
+
+export class Logo extends Block<IProps, Refs> {
   constructor(props: IProps) {
     super(props);
   }

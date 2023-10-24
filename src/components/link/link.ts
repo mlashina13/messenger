@@ -6,7 +6,9 @@ export interface IProps {
     name: string
 }
 
-export class Link extends Block<IProps> {
+type Refs = {}
+
+export class Link extends Block<IProps, Refs> {
   constructor(props: IProps) {
     super(props);
   }
