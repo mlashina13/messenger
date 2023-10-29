@@ -1,5 +1,4 @@
 import Block from '../../core/Block';
-import { registerHelper, render } from '../../core/registerHelper';
 
 export interface IProp {}
 
@@ -22,7 +21,3 @@ export class Page404 extends Block<IProp, Refs> {
     {{/Form}}</main>`);
   }
 }
-
-registerHelper();
-const page404 = new Page404();
-render('#app', page404);

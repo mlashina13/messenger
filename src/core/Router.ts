@@ -10,13 +10,8 @@ export class Router {
   private _rootQuery: string;
 
   private _currentRoute: Route;
-  // private static __instance: ;
 
   constructor(rootQuery: string) {
-  /*  if (Router.__instance) {
-      return Router.__instance;
-    } */
-
     this.routes = [];
     this.history = window.history;
     this._rootQuery = rootQuery;
@@ -33,12 +28,9 @@ export class Router {
   }
 
   start() {
-    /* window.onpopstate = ((event: Event) => {
-
-      if(event?.currentTarget?.location?.pathname) {
-        this._onRoute(event.currentTarget.location.pathname as string);
-      }
-    }); */
+    window.onpopstate = ((event: PopStateEvent) => {
+      this._onRoute(event.state.pathname);
+    });
 
     this._onRoute(window.location.pathname);
   }
@@ -63,15 +55,11 @@ export class Router {
   }
 
   back(pathname: string) {
-    // this.history.go(-1)
     this._onRoute(pathname);
   }
 
-  /* forward() {
-    this.history.go(1);
-  } */
-
   getRoute(pathname: string) {
-    return this.routes.find((route: Route) => route.match(pathname));
+    const route = this.routes.find((route: Route) => route.match(pathname));
+    return route || null;
   }
 }

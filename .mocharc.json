@@ -1,0 +1,6 @@
+{
+  "extensions": ["ts"],
+  "spec": ["src/**/*.spec.ts"],
+  "require": [ "./babel-register.js","./mochaSetup.js"],
+  "loader": "ts-node/esm"
+}

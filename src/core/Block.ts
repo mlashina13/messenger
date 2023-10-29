@@ -154,13 +154,6 @@ export class Block <Props extends object, Refs extends RefType = RefType > {
 
     const fragment = templ.content;
 
-    /*   this.refs = Array.from(fragment.querySelectorAll('[ref]')).reduce((list, element) => {
-      const key = element.getAttribute('ref')!;
-      list[key as keyof typeof list ] = element as HTMLElement;
-      element.removeAttribute('ref');
-      return list;
-    }, contextAndStubs.__refs as Refs); */
-
     contextAndStubs.__children?.forEach((item) => {
       item.embed(templ.content);
     });
