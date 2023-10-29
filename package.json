@@ -14,7 +14,6 @@
     "test": "mocha",
     "lint:fix": "npm run check:js -- --fix",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix"
-
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
@@ -33,7 +32,7 @@
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "jsdom": "^22.1.0",
     "mocha": "10.2.0",
     "postcss-nesting": "^12.0.1",
@@ -53,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test lint"
+      "pre-commit": "npm run lint && npm run test"
     }
   },
   "engines": {

@@ -29,6 +29,10 @@ describe('Проверка Router', () => {
     PageClass = Page;
   })
 
+  afterEach(() => {
+    sinon.restore()
+  })
+
   it('Проверяем, что компонент добавляется на страницу данные по указанному querySelector', () => {
     const querySelector = '.app';
     const router = new Router(querySelector);

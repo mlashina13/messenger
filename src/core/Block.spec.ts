@@ -11,8 +11,6 @@ type Refs = {}
 
 describe('Проверка Block', () => {
   let PageClass: typeof Block<IProps, Refs>;
-  const rootElement = document.createElement('div');
-  document.body.append(rootElement);
   before(() => {
     class Page extends Block<IProps, Refs> {
       constructor(props: IProps) {
@@ -29,10 +27,15 @@ describe('Проверка Block', () => {
     }
     PageClass = Page;
   })
+
+  afterEach(() => {
+    sinon.restore()
+  })
   it('Проверка изменения свойств в компоненте', () => {
+    const rootElement = document.createElement('div');
+    document.body.append(rootElement);
     const text = 'new text';
     const component = new PageClass({ text: 'text' });
-    rootElement.append(component.getContent()!);
     component.setProps({ text })
     const element = component.element?.innerHTML;
     expect(element).to.be.eq(text)
