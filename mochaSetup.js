@@ -1,9 +1,8 @@
-import {JSDOM} from 'jsdom';
-import {describe, it} from 'mocha';
-
+import { JSDOM } from 'jsdom';
+import { describe, it } from 'mocha';
 
 // jsdom
-const jsdom = new JSDOM(`<body><div id="app"></div></body>`);
+const jsdom = new JSDOM('<body><div id="app"></div></body>');
 
 global.window = jsdom.window;
 global.document = jsdom.window.document;
