@@ -1,6 +1,4 @@
 import Block from '../../core/Block';
-import { registerHelper, render } from '../../core/registerHelper';
-import { registerComponent } from '../../core/resgiterComponent';
 
 export interface IProps {
 }
@@ -25,8 +23,3 @@ export class Page500 extends Block<IProps, Refs> {
 </main>`);
   }
 }
-
-registerHelper();
-registerComponent('Page500', Page500);
-const page500 = new Page500();
-render('#app', page500);

@@ -22,7 +22,7 @@ export class HttpTransport {
         (acc, e, i) => `${acc}${i > 0 ? '&' : '?'}${e[0]}=${(e[1])}`,
         '',
       );
-    return res;
+    return encodeURI(res);
   }
 
   get: HTTPMethod = (url, data = {}, headers = {}) => {

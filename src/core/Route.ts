@@ -6,15 +6,16 @@ function isEqual(lhs: unknown, rhs: unknown) {
 }
 
 function render(query: string, block: Block<Object, RefType>) {
-  const root = document.querySelector(query);
-  if (root) {
-    root.innerHTML = '';
-    root.append(block.getContent()!);
-    return root;
+  let root = document.querySelector(query);
+  root = root || document.querySelector('main');
+  if (!root) {
+    root = document.createElement('main')
+    root.setAttribute('id', 'rootId');
+    document.body.append(root)
   }
-  const templ = document.createElement('template');
-  templ.append(block.getContent()!);
-  return templ;
+  root.innerHTML = '';
+  root.append(block.getContent()!);
+  return root;
 }
 
 export class Route {
@@ -50,12 +51,7 @@ export class Route {
   }
 
   render() {
-  //  if (!this._block) {
     this._block = new (this._blockClass as any)();
     render(this._props.rootQuery as string, this._block);
-
-    // }
-
-    // this._block.show();
   }
 }

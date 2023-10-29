@@ -5,7 +5,7 @@ import { transformUser } from '../utils/apiTransformers';
 import { navigation } from '../utils/navigation';
 import { TAppState, TUser } from '../type';
 import { Store } from '../core/Store';
-import { initState } from '../index';
+import { initState } from '../core/constain';
 
 const authApi = new AuthApi();
 

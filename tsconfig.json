@@ -5,7 +5,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -16,7 +16,18 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "typeRoots": ["node_modules/@types", "typings/app.d.ts"]
+    "typeRoots": ["node_modules/@types", "typings/app.d.ts"],
+    "esModuleInterop": true,
+    "types": [
+      "mocha",
+      "node"
+      ]
   },
-  "include": ["src"]
+  "ts-node": {
+    "esm": "true",
+    "experimentalSpecifierResolution": "true",
+    "transpileOnly": "true"
+  },
+  "include": ["src/**/*.ts",  "e2e"],
+  "exclude": ["node_modules","src/**/*.spec.ts"]
 }
