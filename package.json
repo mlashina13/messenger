@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "prepare": "husky install",
     "start": "npm run lint && vite",
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build",
